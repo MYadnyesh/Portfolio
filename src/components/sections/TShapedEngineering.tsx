@@ -58,7 +58,7 @@ export function TShapedEngineering() {
   };
 
   return (
-    <section id="t-shaped" className="section bg-[var(--color-bg-elevated)]">
+    <section id="t-shaped" className="section bg-(--color-bg-elevated)">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,7 +84,7 @@ export function TShapedEngineering() {
           <div
             role="tablist"
             aria-label="Engineering breadth areas"
-            className="flex items-stretch justify-center gap-px bg-[var(--color-border)] max-w-3xl mx-auto"
+            className="flex items-stretch justify-center gap-px bg-(--color-border) max-w-3xl mx-auto"
           >
             {(["cloud", "fullstack", "product"] as TabId[]).map((id) => (
               <button
@@ -95,14 +95,14 @@ export function TShapedEngineering() {
                 onClick={() => setActiveTab(id)}
                 onKeyDown={handleKeyDown}
                 className={cn(
-                  "flex-1 bg-[var(--color-bg-elevated)] px-4 py-5 text-center transition-colors",
-                  activeTab === id ? "bg-[var(--color-bg-card)]" : "hover:bg-[var(--color-bg-card)]/60"
+                  "flex-1 bg-(--color-bg-elevated) px-4 py-5 text-center transition-colors",
+                  activeTab === id ? "bg-(--color-bg-card)" : "hover:bg-(--color-bg-card)/60"
                 )}
               >
                 <span
                   className={cn(
                     "font-display text-sm",
-                    activeTab === id ? "text-[var(--color-accent)]" : "text-[var(--color-fg-muted)]"
+                    activeTab === id ? "text-(--color-accent)" : "text-(--color-fg-muted)"
                   )}
                 >
                   {tabData[id].title}
@@ -112,7 +112,7 @@ export function TShapedEngineering() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-px h-8 bg-[var(--color-border)]" />
+            <div className="w-px h-8 bg-(--color-border)" />
           </div>
 
           <div className="max-w-xs mx-auto">
@@ -125,8 +125,8 @@ export function TShapedEngineering() {
               className={cn(
                 "w-full border px-4 py-6 text-center transition-colors",
                 activeTab === "vertical"
-                  ? "border-[var(--color-accent)] bg-[var(--color-bg-card)]"
-                  : "border-[var(--color-border)] hover:border-[var(--color-border-strong-solid)]"
+                  ? "border-(--color-accent) bg-(--color-bg-card)"
+                  : "border-(--color-border) hover:border-(--color-border-strong-solid)"
               )}
             >
               <span className="eyebrow block mb-1">Primary Focus</span>
@@ -135,7 +135,7 @@ export function TShapedEngineering() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-px h-8 bg-[var(--color-border)]" />
+            <div className="w-px h-8 bg-(--color-border)" />
           </div>
 
           <div className="max-w-2xl mx-auto">
@@ -148,12 +148,12 @@ export function TShapedEngineering() {
               className={cn(
                 "w-full border px-4 py-4 text-center transition-colors",
                 activeTab === "foundation"
-                  ? "border-[var(--color-accent)] bg-[var(--color-bg-card)]"
-                  : "border-[var(--color-border)] hover:border-[var(--color-border-strong-solid)]"
+                  ? "border-(--color-accent) bg-(--color-bg-card)"
+                  : "border-(--color-border) hover:border-(--color-border-strong-solid)"
               )}
             >
               <span className="font-display text-base">{tShapedData.foundation.title}</span>
-              <span className="block text-[var(--color-fg-subtle)] text-xs mt-1">
+              <span className="block text-(--color-fg-subtle) text-xs mt-1">
                 The bedrock everything builds on
               </span>
             </button>
@@ -166,7 +166,7 @@ export function TShapedEngineering() {
             <div>
               <h3 className="font-display text-xl">{currentData.title}</h3>
               {"description" in currentData && currentData.description && (
-                <p className="text-[var(--color-fg-muted)] text-lg md:text-xl mt-1 max-w-lg">{currentData.description}</p>
+                <p className="text-(--color-fg-muted) text-lg md:text-xl mt-1 max-w-lg">{currentData.description}</p>
               )}
             </div>
             <div className="flex flex-wrap gap-1">
@@ -177,8 +177,8 @@ export function TShapedEngineering() {
                   className={cn(
                     "px-2.5 py-1 font-mono text-xs tracking-wide uppercase transition-colors",
                     activeTab === tab.id
-                      ? "text-[var(--color-accent)]"
-                      : "text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-muted)]"
+                      ? "text-(--color-accent)"
+                      : "text-(--color-fg-subtle) hover:text-(--color-fg-muted)"
                   )}
                 >
                   {tab.label}
@@ -199,10 +199,10 @@ export function TShapedEngineering() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
-                className="flex items-baseline gap-2 py-1.5 border-b border-[var(--color-border)]"
+                className="flex items-baseline gap-2 py-1.5 border-b border-(--color-border)"
               >
                 <span className="index-num text-xs">{String(index + 1).padStart(2, "0")}</span>
-                <span className="text-sm text-[var(--color-fg)]">{item}</span>
+                <span className="text-sm text-(--color-fg)">{item}</span>
               </motion.div>
             ))}
           </div>

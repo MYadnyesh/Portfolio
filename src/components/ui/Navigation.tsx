@@ -73,8 +73,8 @@ export function Navigation() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[var(--color-bg)]",
-          isScrolled ? "border-b border-[var(--color-border)]" : "border-b border-transparent"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-(--color-bg)",
+          isScrolled ? "border-b border-(--color-border)" : "border-b border-transparent"
         )}
         role="navigation"
         aria-label="Main navigation"
@@ -107,14 +107,14 @@ export function Navigation() {
                       scrollTo(item.href);
                     }}
                     className={cn(
-                      "font-mono text-xs tracking-[0.1em] uppercase transition-colors relative py-2",
+                      "font-mono text-xs tracking-widest uppercase transition-colors relative py-2",
                       isActive(item.href)
-                        ? "text-[var(--color-accent)]"
-                        : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
+                        ? "text-(--color-accent)"
+                        : "text-(--color-fg-muted) hover:text-(--color-fg)"
                     )}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
-                    <span className="text-[var(--color-fg-subtle)] mr-1.5">{item.index} /</span>
+                    <span className="text-(--color-fg-subtle) mr-1.5">{item.index} /</span>
                     {item.label}
                   </a>
                 ))}
@@ -122,7 +122,7 @@ export function Navigation() {
                 href={socialLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono uppercase tracking-[0.1em] text-[var(--color-fg)] border-b border-[var(--color-accent)] pb-0.5 hover:text-[var(--color-accent)] transition-colors ml-2"
+                className="text-xs font-mono uppercase tracking-widest text-(--color-fg) border-b border-(--color-accent) pb-0.5 hover:text-(--color-accent) transition-colors ml-2"
               >
                 Book a call &rarr;
               </a>
@@ -130,7 +130,7 @@ export function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden font-mono text-xs tracking-[0.1em] uppercase text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="md:hidden font-mono text-xs tracking-widest uppercase text-(--color-fg-muted) hover:text-(--color-fg) transition-colors min-h-11 min-w-11 flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -151,7 +151,7 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[var(--color-bg)] md:hidden flex flex-col justify-center px-6"
+            className="fixed inset-0 z-40 bg-(--color-bg) md:hidden flex flex-col justify-center px-6"
           >
             <nav aria-label="Mobile navigation" className="flex flex-col">
               {navItems.map((item, i) => (
@@ -165,14 +165,14 @@ export function Navigation() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.05 * i }}
-                  className="flex items-baseline gap-4 py-4 border-b border-[var(--color-border)] min-h-[44px]"
+                  className="flex items-baseline gap-4 py-4 border-b border-(--color-border) min-h-11"
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
                   <span className="index-num text-lg">{item.index}</span>
                   <span
                     className={cn(
                       "font-display text-3xl",
-                      isActive(item.href) ? "text-[var(--color-accent)]" : "text-[var(--color-fg)]"
+                      isActive(item.href) ? "text-(--color-accent)" : "text-(--color-fg)"
                     )}
                   >
                     {item.label}
@@ -186,7 +186,7 @@ export function Navigation() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.05 * navItems.length }}
-                className="btn-accent w-full text-center mt-8 min-h-[44px] flex items-center justify-center"
+                className="btn-accent w-full text-center mt-8 min-h-11 flex items-center justify-center"
               >
                 Book a call
               </motion.a>

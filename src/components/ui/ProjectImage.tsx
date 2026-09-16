@@ -40,7 +40,7 @@ export function ProjectImage({
     return (
       <div
         className={cn(
-          "relative aspect-[4/3] md:aspect-[16/11] overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-card)]",
+          "relative aspect-[4/3] md:aspect-[16/11] overflow-hidden border border-(--color-border) bg-(--color-bg-card)",
           className
         )}
       >
@@ -55,7 +55,7 @@ export function ProjectImage({
             </span>
           </div>
 
-          <ul className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs tracking-wide text-[var(--color-fg-subtle)]">
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs tracking-wide text-(--color-fg-subtle)">
             {stack.map((tech) => (
               <li key={tech} className="whitespace-nowrap">
                 {tech}
@@ -78,7 +78,7 @@ export function ProjectImage({
   return (
     <div
       className={cn(
-        "relative aspect-[4/3] md:aspect-[16/11] overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-card)]",
+        "relative aspect-[4/3] md:aspect-[16/11] overflow-hidden border border-(--color-border) bg-(--color-bg-card)",
         className
       )}
     >

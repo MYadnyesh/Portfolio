@@ -11,11 +11,11 @@ export function Tag({ className, variant = "default", size = "md", children, ...
   const baseStyles = "inline-flex items-center font-mono tracking-wide border transition-colors";
 
   const variants = {
-    core: "text-[var(--color-core)] border-[color-mix(in_srgb,_var(--color-core)_40%,_transparent)]",
-    used: "text-[var(--color-used)] border-[color-mix(in_srgb,_var(--color-used)_40%,_transparent)]",
-    familiar: "text-[var(--color-familiar)] border-[color-mix(in_srgb,_var(--color-familiar)_40%,_transparent)]",
-    exploring: "text-[var(--color-exploring)] border-[color-mix(in_srgb,_var(--color-exploring)_40%,_transparent)]",
-    default: "text-[var(--color-fg-muted)] border-[var(--color-border-strong-solid)]",
+    core: "text-(--color-core) border-[color-mix(in_srgb,_var(--color-core)_40%,_transparent)]",
+    used: "text-(--color-used) border-[color-mix(in_srgb,_var(--color-used)_40%,_transparent)]",
+    familiar: "text-(--color-familiar) border-[color-mix(in_srgb,_var(--color-familiar)_40%,_transparent)]",
+    exploring: "text-(--color-exploring) border-[color-mix(in_srgb,_var(--color-exploring)_40%,_transparent)]",
+    default: "text-(--color-fg-muted) border-(--color-border-strong-solid)",
   };
 
   const sizes = {

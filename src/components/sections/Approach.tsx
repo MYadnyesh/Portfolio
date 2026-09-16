@@ -18,7 +18,7 @@ const reveal = {
 export function Approach() {
   return (
     <section id="approach" className="section">
-      <div className="max-w-[90rem] mx-auto">
+      <div className="max-w-360 mx-auto">
         {/* Numbered eyebrow + hairline */}
         <motion.div
           {...reveal}
@@ -26,7 +26,7 @@ export function Approach() {
           className="flex items-center gap-6"
         >
           <span className="eyebrow whitespace-nowrap">01 / What I help with</span>
-          <span aria-hidden="true" className="flex-1 h-px bg-[var(--color-border)]" />
+          <span aria-hidden="true" className="flex-1 h-px bg-(--color-border)" />
         </motion.div>
 
         {/* Headline */}
@@ -36,7 +36,7 @@ export function Approach() {
           className="mt-12 font-display font-bold uppercase leading-[0.95] tracking-[-0.02em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-balance"
         >
           Your idea.{" "}
-          <span className="text-serif-italic normal-case text-[var(--color-accent-readable)]">
+          <span className="text-serif-italic normal-case text-(--color-accent-readable)">
             your users.
           </span>
           <br />
@@ -47,7 +47,7 @@ export function Approach() {
         <motion.p
           {...reveal}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 max-w-2xl text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed text-pretty"
+          className="mt-8 max-w-2xl text-lg md:text-xl text-(--color-fg-muted) leading-relaxed text-pretty"
         >
           I take ideas from a first sketch to a working product, building the full stack,
           weaving in AI where it earns its place, and helping people grow along the way.
@@ -60,13 +60,13 @@ export function Approach() {
               key={col.word}
               {...reveal}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="border-t border-[var(--color-border)] py-10 md:py-14 md:px-8 md:first:pl-0 md:last:pr-0"
+              className="border-t border-(--color-border) py-10 md:py-14 md:px-8 md:first:pl-0 md:last:pr-0"
             >
-              <col.Icon className="w-7 h-7 md:w-8 md:h-8 text-[var(--color-accent-readable)]" strokeWidth={1.5} aria-hidden="true" />
+              <col.Icon className="w-7 h-7 md:w-8 md:h-8 text-(--color-accent-readable)" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="mt-5 font-display font-bold text-3xl md:text-4xl lg:text-5xl leading-none">
                 {col.word}
               </h3>
-              <p className="mt-5 text-lg md:text-xl font-medium text-[var(--color-fg-muted)] leading-relaxed max-w-xs">{col.caption}</p>
+              <p className="mt-5 text-lg md:text-xl font-medium text-(--color-fg-muted) leading-relaxed max-w-xs">{col.caption}</p>
             </motion.div>
           ))}
         </div>

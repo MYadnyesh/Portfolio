@@ -10,7 +10,7 @@ export function BackgroundFX() {
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none" aria-hidden>
       {/* Base tint */}
-      <div className="absolute inset-0 bg-[var(--color-bg)]" />
+      <div className="absolute inset-0 bg-(--color-bg)" />
 
       {/* Drifting star layer 1 */}
       <div className="absolute inset-[-20%] starfield animate-drift-slow" />

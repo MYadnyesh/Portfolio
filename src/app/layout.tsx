@@ -89,7 +89,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen text-[var(--color-fg)] antialiased">
+      <body className="min-h-screen text-(--color-fg) antialiased">
         <BackgroundFX />
         <ContentProtection />
         {children}

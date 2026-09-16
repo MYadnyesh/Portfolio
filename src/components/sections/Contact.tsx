@@ -54,7 +54,7 @@ export function Contact() {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   return (
-    <section id="contact" className="section bg-[var(--color-bg-elevated)]">
+    <section id="contact" className="section bg-(--color-bg-elevated)">
       <div className="container">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left: Info & Services */}
@@ -66,7 +66,7 @@ export function Contact() {
           >
             <span className="eyebrow">Get in touch</span>
             <h2 className="font-display text-h1 mt-3 mb-6 text-balance">Let&apos;s build something useful.</h2>
-            <p className="text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed mb-10 max-w-md">
+            <p className="text-lg md:text-xl text-(--color-fg-muted) leading-relaxed mb-10 max-w-md">
               I work with founders, engineering teams, and organizations building AI-native products
               and full-stack applications, a technical prototype, an AI integration, system
               architecture, or a full MVP.
@@ -74,11 +74,11 @@ export function Contact() {
 
             <div>
               <span className="eyebrow block mb-4">What I can help build</span>
-              <ul className="divide-y divide-[var(--color-border)]" role="list">
+              <ul className="divide-y divide-(--color-border)" role="list">
                 {services.map((category) => (
                   <li key={category.category} className="py-3">
-                    <p className="font-display text-sm text-[var(--color-accent)] mb-1.5">{category.category}</p>
-                    <p className="text-[var(--color-fg-muted)] text-base md:text-lg">{category.items.join(" · ")}</p>
+                    <p className="font-display text-sm text-(--color-accent) mb-1.5">{category.category}</p>
+                    <p className="text-(--color-fg-muted) text-base md:text-lg">{category.items.join(" · ")}</p>
                   </li>
                 ))}
               </ul>
@@ -87,14 +87,14 @@ export function Contact() {
             <div className="rule mt-10 pt-6">
               <span className="eyebrow block mb-3">Other ways to connect</span>
               <div className="flex flex-col gap-2 text-sm">
-                <a href={socialLinks.email} className="text-[var(--color-fg)] hover:text-[var(--color-accent)] transition-colors">
+                <a href={socialLinks.email} className="text-(--color-fg) hover:text-(--color-accent) transition-colors">
                   yadnyeshmulay@gmail.com
                 </a>
                 <a
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--color-fg)] hover:text-[var(--color-accent)] transition-colors"
+                  className="text-(--color-fg) hover:text-(--color-accent) transition-colors"
                 >
                   LinkedIn, direct message
                 </a>
@@ -102,12 +102,12 @@ export function Contact() {
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--color-fg)] hover:text-[var(--color-accent)] transition-colors"
+                  className="text-(--color-fg) hover:text-(--color-accent) transition-colors"
                 >
                   GitHub, open source & code
                 </a>
               </div>
-              <p className="text-xs text-[var(--color-fg-subtle)] mt-6 leading-relaxed max-w-sm">
+              <p className="text-xs text-(--color-fg-subtle) mt-6 leading-relaxed max-w-sm">
                 Form submissions are used only to schedule a conversation, not stored in databases,
                 not shared, not used for marketing. No tracking pixels.
               </p>
@@ -122,10 +122,10 @@ export function Contact() {
             transition={{ delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="mb-8 border border-[var(--color-border)] p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="mb-8 border border-(--color-border) p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="font-display font-bold text-lg">Rather just talk?</p>
-                <p className="text-sm text-[var(--color-fg-muted)]">Grab a 30-minute slot on my calendar.</p>
+                <p className="text-sm text-(--color-fg-muted)">Grab a 30-minute slot on my calendar.</p>
               </div>
               <a
                 href={socialLinks.calendly}
@@ -141,11 +141,11 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-4 border border-[var(--color-success)]/40 mb-6 flex items-center gap-3"
+                className="p-4 border border-(--color-success)/40 mb-6 flex items-center gap-3"
                 role="status"
                 aria-live="polite"
               >
-                <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: "var(--color-success)" }} />
+                <CheckCircle className="w-5 h-5 shrink-0" style={{ color: "var(--color-success)" }} />
                 <p className="text-sm" style={{ color: "var(--color-success)" }}>{state.message}</p>
               </motion.div>
             )}
@@ -154,10 +154,10 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-4 border border-[var(--color-error)]/40 mb-6 flex items-center gap-3"
+                className="p-4 border border-(--color-error)/40 mb-6 flex items-center gap-3"
                 role="alert"
               >
-                <AlertCircle className="w-5 h-5 flex-shrink-0" style={{ color: "var(--color-error)" }} />
+                <AlertCircle className="w-5 h-5 shrink-0" style={{ color: "var(--color-error)" }} />
                 <p className="text-sm" style={{ color: "var(--color-error)" }}>{state.message}</p>
               </motion.div>
             )}
@@ -220,7 +220,7 @@ export function Contact() {
               />
 
               {state.status === "submitting" && (
-                <div className="flex items-center gap-2 text-sm text-[var(--color-fg-muted)]" role="status" aria-live="polite">
+                <div className="flex items-center gap-2 text-sm text-(--color-fg-muted)" role="status" aria-live="polite">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   <span>Sending...</span>
                 </div>
@@ -238,7 +238,7 @@ export function Contact() {
                 Send Message
               </Button>
 
-              <p className="text-xs text-[var(--color-fg-subtle)]">
+              <p className="text-xs text-(--color-fg-subtle)">
                 By submitting, you agree to the data handling note above. No spam, ever.
               </p>
             </form>

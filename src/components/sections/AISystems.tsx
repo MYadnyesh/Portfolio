@@ -73,7 +73,7 @@ export function AISystems() {
         </motion.div>
 
         {/* Pipeline */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--color-border)] mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-(--color-border) mb-16">
           {aiPipeline.map((stage, index) => (
             <motion.div
               key={stage.stage}
@@ -81,20 +81,20 @@ export function AISystems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="bg-[var(--color-bg)] p-5"
+              className="bg-(--color-bg) p-5"
             >
               <span className="index-num text-xl">{String(index + 1).padStart(2, "0")}</span>
               <h3 className="font-display text-base mt-2">{stage.stage}</h3>
-              <p className="text-[var(--color-fg-subtle)] text-xs font-mono mt-1 mb-4">{stage.description}</p>
+              <p className="text-(--color-fg-subtle) text-xs font-mono mt-1 mb-4">{stage.description}</p>
               <ul className="space-y-1.5" role="list">
                 {stage.items.length > 0 ? (
                   stage.items.map((item) => (
-                    <li key={item} className="text-base md:text-lg text-[var(--color-fg-muted)]">
+                    <li key={item} className="text-base md:text-lg text-(--color-fg-muted)">
                       {item}
                     </li>
                   ))
                 ) : (
-                  <li className="text-sm text-[var(--color-fg-subtle)] italic">&middot;</li>
+                  <li className="text-sm text-(--color-fg-subtle) italic">&middot;</li>
                 )}
               </ul>
             </motion.div>
@@ -119,7 +119,7 @@ export function AISystems() {
               >
                 <Card padding="md" className="h-full">
                   <h4 className="font-display text-base mb-2">{principle.title}</h4>
-                  <p className="text-[var(--color-fg-muted)] text-base md:text-lg leading-relaxed">{principle.description}</p>
+                  <p className="text-(--color-fg-muted) text-base md:text-lg leading-relaxed">{principle.description}</p>
                 </Card>
               </motion.div>
             ))}

@@ -37,15 +37,15 @@ function PronunciationEntry() {
         type="button"
         onClick={playPronunciation}
         aria-label="Play pronunciation of Yadnyesh"
-        className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--color-border)] text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+        className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-(--color-border) text-(--color-fg) transition-colors hover:border-(--color-accent) hover:text-(--color-accent)"
       >
         <Volume2 className={`w-4 h-4 ${speaking ? "animate-pulse" : ""}`} aria-hidden="true" />
       </button>
-      <span className="font-mono text-sm text-[var(--color-fg-muted)]">/ˈjəd.nyeʃ/</span>
-      <span className="font-mono text-xs uppercase tracking-[0.1em] text-[var(--color-fg-subtle)]">
+      <span className="font-mono text-sm text-(--color-fg-muted)">/ˈjəd.nyeʃ/</span>
+      <span className="font-mono text-xs uppercase tracking-widest text-(--color-fg-subtle)">
         proper noun
       </span>
-      <span className="w-full text-base md:text-lg font-medium text-[var(--color-fg)] max-w-md">
+      <span className="w-full text-base md:text-lg font-medium text-(--color-fg) max-w-md">
         ships fast. builds real things. adds AI where it earns its place.
       </span>
     </div>
@@ -59,7 +59,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 starfield" aria-hidden />
 
       <div className="flex-1 flex flex-col justify-center pt-28 pb-8 px-4 md:px-8 lg:px-16">
-        <div className="mx-auto w-full max-w-[90rem]">
+        <div className="mx-auto w-full max-w-360">
           {/* Mark */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -86,13 +86,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display font-bold uppercase leading-[0.92] tracking-tight text-[var(--color-fg)]"
+              className="font-display font-bold uppercase leading-[0.92] tracking-tight text-(--color-fg)"
               style={{ fontSize: "clamp(3rem, 7vw, 6.75rem)" }}
             >
               I build useful things
               <br />
               and ship them with{" "}
-              <span className="text-serif-italic lowercase text-[var(--color-accent-readable)]">
+              <span className="text-serif-italic lowercase text-(--color-accent-readable)">
                 ai
               </span>
               .
@@ -102,7 +102,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-7 max-w-2xl text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed"
+              className="mt-7 max-w-2xl text-lg md:text-xl text-(--color-fg-muted) leading-relaxed"
             >
               Full-stack product builds, AI integration, and hands-on teaching for students and
               professionals.
@@ -122,7 +122,7 @@ export function Hero() {
                 href={socialLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-[0.12em] text-[var(--color-fg)] border-b border-[var(--color-fg-subtle)] pb-1 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+                className="font-mono text-xs uppercase tracking-[0.12em] text-(--color-fg) border-b border-(--color-fg-subtle) pb-1 hover:border-(--color-accent) hover:text-(--color-accent) transition-colors"
               >
                 Book a call &rarr;
               </a>
@@ -131,7 +131,7 @@ export function Hero() {
         </div>
 
         {/* Name wordmark, fully legible, no overlap + portrait photo slot alongside */}
-        <div className="relative mx-auto w-full max-w-[90rem] mt-12 lg:mt-16">
+        <div className="relative mx-auto w-full max-w-360 mt-12 lg:mt-16">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -147,7 +147,7 @@ export function Hero() {
               YADNYESH
             </div>
             {/* Portrait photo slot, alongside, never covering the name */}
-            <div className="shrink-0 w-[22%] max-w-[220px] min-w-[110px] hidden sm:block">
+            <div className="shrink-0 w-[22%] max-w-55 min-w-27.5 hidden sm:block">
               <PhotoPlaceholder
                 ratio="3/4"
                 alt="Portrait of Yadnyesh"
@@ -163,17 +163,17 @@ export function Hero() {
       </div>
 
       {/* Marquee ticker */}
-      <div className="border-y border-[var(--color-border)] overflow-hidden">
+      <div className="border-y border-(--color-border) overflow-hidden">
         <div className="marquee-track py-4">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex items-center shrink-0" aria-hidden={dup === 1}>
               {marqueeWords.map((word) => (
                 <span
                   key={word}
-                  className="font-display font-bold text-lg md:text-2xl uppercase tracking-tight text-[var(--color-fg-muted)] mx-6 flex items-center gap-6"
+                  className="font-display font-bold text-lg md:text-2xl uppercase tracking-tight text-(--color-fg-muted) mx-6 flex items-center gap-6"
                 >
                   {word}
-                  <span className="text-[var(--color-accent)] font-mono text-base">-</span>
+                  <span className="text-(--color-accent) font-mono text-base">-</span>
                 </span>
               ))}
             </div>

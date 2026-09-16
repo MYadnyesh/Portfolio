@@ -23,7 +23,7 @@ export function Capabilities() {
         >
           <span className="eyebrow">Capabilities</span>
           <h2 className="section-title mt-3 font-bold uppercase">
-            The full <span className="text-serif-italic lowercase text-[var(--color-accent-readable)]">toolkit</span>
+            The full <span className="text-serif-italic lowercase text-(--color-accent-readable)">toolkit</span>
           </h2>
           <p className="section-subtitle max-w-xl">
             A wall of what I build with, grouped by where it sits in the stack. Hover any row to
@@ -39,12 +39,12 @@ export function Capabilities() {
           return (
             <div
               key={row.key}
-              className="group relative flex items-center border-y border-[var(--color-border)] py-4 md:py-6"
+              className="group relative flex items-center border-y border-(--color-border) py-4 md:py-6"
             >
               {/* Category label pinned left, over a fade */}
-              <div className="absolute left-0 top-0 bottom-0 z-10 flex items-center pl-4 md:pl-8 pr-8 bg-gradient-to-r from-[var(--color-bg)] via-[var(--color-bg)] to-transparent">
+              <div className="absolute left-0 top-0 bottom-0 z-10 flex items-center pl-4 md:pl-8 pr-8 bg-linear-to-r from-(--color-bg) via-(--color-bg) to-transparent">
                 <span className="index-num text-sm mr-3">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-mono text-xs tracking-[0.12em] uppercase text-[var(--color-fg-muted)] whitespace-nowrap">
+                <span className="font-mono text-xs tracking-[0.12em] uppercase text-(--color-fg-muted) whitespace-nowrap">
                   {row.label}
                 </span>
               </div>
@@ -62,10 +62,10 @@ export function Capabilities() {
                     {items.map((item) => (
                       <span
                         key={item.name}
-                        className="font-display font-bold text-2xl md:text-4xl uppercase tracking-tight text-[var(--color-fg-subtle)] transition-colors hover:text-[var(--color-fg)] mx-5 md:mx-7 flex items-center gap-5 md:gap-7"
+                        className="font-display font-bold text-2xl md:text-4xl uppercase tracking-tight text-(--color-fg-subtle) transition-colors hover:text-(--color-fg) mx-5 md:mx-7 flex items-center gap-5 md:gap-7"
                       >
                         {item.name}
-                        <span className="text-[var(--color-accent)] text-base md:text-lg" aria-hidden>
+                        <span className="text-(--color-accent) text-base md:text-lg" aria-hidden>
                           &#47;&#47;
                         </span>
                       </span>

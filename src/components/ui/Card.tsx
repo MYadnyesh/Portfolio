@@ -11,8 +11,8 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant = "default", padding = "md", children, ...props }, ref) => {
     const variants = {
-      default: "bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-[var(--radius-lg)] transition-all duration-300 hover:border-[var(--color-border-strong-solid)]",
-      interactive: "bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-[var(--radius-lg)] cursor-pointer transition-all duration-300 hover:border-[var(--color-border-strong-solid)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-1",
+      default: "bg-(--color-bg-card) border border-(--color-border) rounded-[var(--radius-lg)] transition-all duration-300 hover:border-(--color-border-strong-solid)",
+      interactive: "bg-(--color-bg-card) border border-(--color-border) rounded-[var(--radius-lg)] cursor-pointer transition-all duration-300 hover:border-(--color-border-strong-solid) hover:shadow-[var(--shadow-lg)] hover:-translate-y-1",
     };
 
     const paddings = { none: "", sm: "p-4", md: "p-6", lg: "p-8" };
@@ -32,12 +32,12 @@ export const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
 CardHeader.displayName = "CardHeader";
 
 export const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => <h3 ref={ref} className={cn("font-display font-medium text-[var(--color-fg)]", className)} {...props} />
+  ({ className, ...props }, ref) => <h3 ref={ref} className={cn("font-display font-medium text-(--color-fg)", className)} {...props} />
 );
 CardTitle.displayName = "CardTitle";
 
 export const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, ...props }, ref) => <p ref={ref} className={cn("text-[var(--color-fg-muted)] text-sm mt-1", className)} {...props} />
+  ({ className, ...props }, ref) => <p ref={ref} className={cn("text-(--color-fg-muted) text-sm mt-1", className)} {...props} />
 );
 CardDescription.displayName = "CardDescription";
 

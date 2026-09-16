@@ -28,7 +28,7 @@ const timeline = [
 
 export function About() {
   return (
-    <section id="about" className="section bg-[var(--color-bg-elevated)]">
+    <section id="about" className="section bg-(--color-bg-elevated)">
       <div className="container">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
           <motion.div
@@ -41,13 +41,13 @@ export function About() {
             <h2 className="font-display text-h1 mt-3 mb-6 text-balance">
               {siteConfig.description}
             </h2>
-            <p className="text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed max-w-md">
+            <p className="text-lg md:text-xl text-(--color-fg-muted) leading-relaxed max-w-md">
               {siteConfig.title}, comfortable moving between product decisions, system
               architecture, and the model layer itself. This is the record of how that came together.
             </p>
           </motion.div>
 
-          <div className="lg:col-span-7 lg:pl-8 lg:border-l lg:border-[var(--color-border)]">
+          <div className="lg:col-span-7 lg:pl-8 lg:border-l lg:border-(--color-border)">
             {timeline.map((item, index) => (
               <motion.div
                 key={item.period}
@@ -58,12 +58,12 @@ export function About() {
                 className={index !== 0 ? "rule pt-6 mt-6" : ""}
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <span className="font-mono text-xs tracking-wide text-[var(--color-fg-subtle)] sm:w-24 sm:flex-shrink-0">
+                  <span className="font-mono text-xs tracking-wide text-(--color-fg-subtle) sm:w-24 sm:shrink-0">
                     {item.period}
                   </span>
                   <div>
                     <h3 className="font-display text-lg mb-1">{item.label}</h3>
-                    <p className="text-[var(--color-fg-muted)] text-base md:text-lg leading-relaxed max-w-xl">
+                    <p className="text-(--color-fg-muted) text-base md:text-lg leading-relaxed max-w-xl">
                       {item.detail}
                     </p>
                   </div>
@@ -87,7 +87,7 @@ export function About() {
               .map((cred) => (
                 <div key={cred.role}>
                   <p className="font-display text-base leading-snug mb-1">{cred.role}</p>
-                  <p className="text-xs text-[var(--color-fg-subtle)] font-mono">
+                  <p className="text-xs text-(--color-fg-subtle) font-mono">
                     {cred.org} · {cred.period}
                   </p>
                 </div>
@@ -107,10 +107,10 @@ export function About() {
             {community.map((c) => (
               <div key={c.role + c.org}>
                 <p className="font-display text-base leading-snug mb-1">{c.role}</p>
-                <p className="text-xs text-[var(--color-fg-subtle)] font-mono mb-1">
+                <p className="text-xs text-(--color-fg-subtle) font-mono mb-1">
                   {c.org} · {c.period}
                 </p>
-                <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">{c.details}</p>
+                <p className="text-sm text-(--color-fg-muted) leading-relaxed">{c.details}</p>
               </div>
             ))}
           </div>
