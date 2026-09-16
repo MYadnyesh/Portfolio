@@ -1,0 +1,128 @@
+@theme {
+  /* Colors : ink / bone / wine palette */
+  --color-bg: #0a0908;
+  --color-bg-elevated: #14120f;
+  --color-bg-card: #1d1a16;
+  --color-border: #221f19;
+  --color-border-strong: #3a352c84;
+  --color-border-strong-solid: #3a352c;
+
+  --color-fg: #e8e4dc;
+  --color-fg-muted: #8f887b;
+  --color-fg-subtle: #56514a;
+
+  --color-accent: #7d1f2e;
+  --color-accent-hover: #a32639;
+  --color-accent-muted: #7d1f2e26;
+  --color-accent-readable: #d65d72;
+  --color-gold: #b4924c;
+
+  --color-success: #6b8f56;
+  --color-warning: #b4924c;
+  --color-error: #a32639;
+
+  /* Proficiency levels : quiet, no rainbow */
+  --color-core: #7d1f2e;
+  --color-used: #b4924c;
+  --color-familiar: #8f887b;
+  --color-exploring: #56514a;
+
+  /* Typography */
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  /* Spacing : 8px base grid (rounded from the 7.2px unit) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Border radius : sharp, matching the source's 0-8px button radii */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-base: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 600ms cubic-bezier(0.65, 0.05, 0, 1);
+  --transition-verySlow: 1000ms cubic-bezier(0.65, 0.05, 0, 1);
+
+  /* Shadows : tinted with the wine accent, not neutral black */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 12px -2px rgb(125 31 46 / 0.25);
+  --shadow-lg: 0 12px 32px -8px rgb(125 31 46 / 0.3);
+  --shadow-xl: 0 24px 48px -12px rgb(125 31 46 / 0.35);
+
+  /* Z-index */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-tooltip: 500;
+}
+
+/* Light mode : bone becomes the canvas, ink becomes the text */
+.light {
+  --color-bg: #e8e4dc;
+  --color-bg-elevated: #f2efe8;
+  --color-bg-card: #ddd7ca;
+  --color-border: #c9c1af;
+  --color-border-strong: #a89f8a84;
+  --color-border-strong-solid: #a89f8a;
+
+  --color-fg: #14120f;
+  --color-fg-muted: #4a4438;
+  --color-fg-subtle: #6f6858;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(125 31 46 / 0.08);
+  --shadow-lg: 0 12px 32px -8px rgb(125 31 46 / 0.1);
+  --shadow-xl: 0 24px 48px -12px rgb(125 31 46 / 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-accent-muted);
+  color: var(--color-fg);
+}
