@@ -7,6 +7,7 @@ import { Input, Textarea, Select } from "@/components/ui/Input";
 import { services, socialLinks } from "@/data/portfolio";
 import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import type { ContactFormState } from "@/app/actions/contact";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 
 const serviceOptions = services.flatMap((category) =>
   category.items.map((item) => ({
@@ -45,8 +46,17 @@ export function Contact() {
         return { status: "error", message: "Please fix the errors below", errors };
       }
 
-      const serverAction = (await import("@/app/actions/contact")).sendMessageAction;
-      return serverAction({ status: "idle", message: "", errors: {} }, formData);
+      const validateContact = (await import("@/app/actions/contact")).validateContact;
+      const validated = await validateContact({ status: "idle", message: "", errors: {} }, formData);
+
+      if (validated.status !== "validated" || !validated.data) {
+        return validated;
+      }
+
+      // Server-side checks (spam, rate limit, Turnstile, schema) passed.
+      // Deliver to Web3Forms from the browser — their free tier rejects
+      // server-to-server submissions.
+      return submitToWeb3Forms(validated.data);
     },
     initialState
   );

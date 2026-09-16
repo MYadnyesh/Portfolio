@@ -18,9 +18,10 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export type ContactFormState = {
-  status: "idle" | "submitting" | "success" | "error";
+  status: "idle" | "submitting" | "validated" | "success" | "error";
   message: string;
   errors?: Partial<Record<keyof ContactFormData, string>>;
+  data?: ContactFormData;
 };
 
 /* ------------------------------------------------------------------ */
@@ -90,7 +91,11 @@ async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   }
 }
 
-export async function sendMessageAction(
+// Runs spam/rate-limit/Turnstile checks and validation server-side (the
+// Turnstile secret key must never reach the client). The actual delivery
+// to Web3Forms happens client-side afterward — see Contact.tsx — because
+// Web3Forms' free tier rejects server-to-server submissions.
+export async function validateContact(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
@@ -143,40 +148,11 @@ export async function sendMessageAction(
     };
   }
 
-  const data = validated.data;
-
-  try {
-    const endpoint = process.env.FORMSPREE_ENDPOINT || "https://formspree.io/f/placeholder";
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeoutId);
-
-    if (response.ok) {
-      return {
-        status: "success",
-        message: "Thanks! I'll get back to you within 1-2 business days.",
-      };
-    }
-    throw new Error("Form submission failed");
-  } catch (err) {
-    if (err instanceof Error && err.name === "AbortError") {
-      return {
-        status: "error",
-        message: "Request timed out. Please try emailing directly: yadnyeshmulay@gmail.com",
-      };
-    }
-    console.error("Contact form error:", err);
-    return {
-      status: "error",
-      message: "Something went wrong. Please try emailing directly: yadnyeshmulay@gmail.com",
-    };
-  }
+  // Passed all server-side checks. Hand the sanitized data back to the
+  // client, which delivers it to Web3Forms directly (see Contact.tsx).
+  return {
+    status: "validated",
+    message: "",
+    data: validated.data,
+  };
 }
