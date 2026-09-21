@@ -237,6 +237,11 @@ export const tShapedData = {
       title: "Product / UX",
       description: "Product thinking, design systems, and user experience",
       items: ["Design Systems (Tokens, Components)", "Accessibility (WCAG AA)", "User Research & Prototyping", "Data Visualization", "Animation & Interaction Design", "Technical Writing & Documentation"]
+    },
+    {
+      title: "Business Consulting",
+      description: "Advising organizations on AI adoption and process transformation",
+      items: ["AI & Agentic AI Transformation Roadmaps", "Technical Product & Program Delivery", "Business Process Optimization", "No-Code / Low-Code Automation (Vibe Coding)"]
     }
   ],
   foundation: {
@@ -446,6 +451,10 @@ export const services = [
   {
     category: "Explore",
     items: ["Emerging Tech Feasibility", "Local LLM Deployment", "Agent Architecture", "AI Infrastructure"]
+  },
+  {
+    category: "Consult",
+    items: ["AI & Agentic AI Transformation Roadmaps", "Technical Product & Program Delivery", "Business Process Optimization", "No-Code / Low-Code Workflow Automation (Vibe Coding)"]
   }
 ];
 
@@ -465,9 +474,9 @@ export const languages = [
 
 export const siteConfig = {
   name: "Yadnyesh Mulay",
-  title: "AI-first T-shaped Full Stack Developer / Forward-Deploy Engineer",
-  description: "I build useful software. I understand the full stack. I work with AI/LLMs. I turn ideas into working technical prototypes.",
+  title: "AI-first T-shaped Full Stack Developer & Business/AI Consultant",
+  description: "I build useful software and advise on AI-driven business transformation. I turn ideas into working technical prototypes, and turn processes into AI & agentic AI roadmaps.",
   url: "https://yadnyesh.dev",
   ogImage: "/images/og-image.png",
-  keywords: ["Full Stack Developer", "AI Engineer", "LLM Applications", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Portfolio"]
+  keywords: ["Full Stack Developer", "AI Engineer", "LLM Applications", "Business Consultant", "AI Transformation Consultant", "Agentic AI", "Technical Product Delivery", "Business Process Optimization", "No-Code Automation", "Vibe Coding", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Portfolio"]
 };

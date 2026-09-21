@@ -8,7 +8,7 @@ export function StructuredData() {
     url: siteConfig.url,
     image: `${siteConfig.url}${siteConfig.ogImage}`,
     sameAs: Object.values(socialLinks),
-    jobTitle: "AI-first T-shaped Full Stack Developer / Forward-Deploy Engineer",
+    jobTitle: "AI-first T-shaped Full Stack Developer / Business & AI Transformation Consultant",
     worksFor: work
       .filter((job) => job.current)
       .map((job) => ({
@@ -32,6 +32,10 @@ export function StructuredData() {
       "AWS",
       "Azure",
       "Docker",
+      "AI & Agentic AI Transformation",
+      "Business Process Optimization",
+      "Technical Product & Program Delivery",
+      "No-Code / Low-Code Automation",
     ],
     alumniOf: {
       "@type": "CollegeOrUniversity",

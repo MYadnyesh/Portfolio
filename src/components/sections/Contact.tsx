@@ -78,12 +78,13 @@ export function Contact() {
             <h2 className="font-display text-h1 mt-3 mb-6 text-balance">Let&apos;s build something useful.</h2>
             <p className="text-lg md:text-xl text-(--color-fg-muted) leading-relaxed mb-10 max-w-md">
               I work with founders, engineering teams, and organizations building AI-native products
-              and full-stack applications, a technical prototype, an AI integration, system
-              architecture, or a full MVP.
+              and full-stack applications, and with business leaders shaping AI & agentic AI
+              transformation roadmaps, whether that&apos;s a technical prototype, an AI integration,
+              a process optimization engagement, or a full MVP.
             </p>
 
             <div>
-              <span className="eyebrow block mb-4">What I can help build</span>
+              <span className="eyebrow block mb-4">What I can help with</span>
               <ul className="divide-y divide-(--color-border)" role="list">
                 {services.map((category) => (
                   <li key={category.category} className="py-3">

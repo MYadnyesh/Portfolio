@@ -24,6 +24,11 @@ const timeline = [
     label: "AI-native software",
     detail: "OutSkill AI Generalist Accelerator. Built Prism, the Microsoft 365 Sentiment Analyzer, and the Gmail/Chat Sentiment Analyzer, putting LLM APIs, RAG, and hybrid NLP into working products.",
   },
+  {
+    period: "2025–Present",
+    label: "AI & business consulting",
+    detail: "Advising on AI & agentic AI transformation roadmaps, technical product and program delivery, business process optimization, and no-code/low-code workflow automation (vibe coding).",
+  },
 ];
 
 export function About() {
@@ -43,7 +48,8 @@ export function About() {
             </h2>
             <p className="text-lg md:text-xl text-(--color-fg-muted) leading-relaxed max-w-md">
               {siteConfig.title}, comfortable moving between product decisions, system
-              architecture, and the model layer itself. This is the record of how that came together.
+              architecture, the model layer itself, and the business process it all needs to serve.
+              This is the record of how that came together.
             </p>
           </motion.div>
 

@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Hammer, Sparkles, GraduationCap } from "lucide-react";
+import { Hammer, Sparkles, GraduationCap, Compass } from "lucide-react";
 
 const columns = [
   { word: "Build", caption: "Full-stack apps, MVPs & prototypes", Icon: Hammer },
   { word: "Enhance", caption: "LLM integration, RAG & automation", Icon: Sparkles },
+  { word: "Consult", caption: "AI transformation roadmaps & process optimization", Icon: Compass },
   { word: "Teach", caption: "Mentoring students & upskilling professionals", Icon: GraduationCap },
 ];
 
@@ -54,7 +55,7 @@ export function Approach() {
         </motion.p>
 
         {/* Three columns */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {columns.map((col, i) => (
             <motion.div
               key={col.word}

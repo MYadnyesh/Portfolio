@@ -12,6 +12,7 @@ const marqueeWords = [
   "FULL STACK",
   "LLM APPS",
   "AUTOMATION",
+  "CONSULTING",
   "MENTORSHIP",
   "PROTOTYPES",
   "TEACHING",
@@ -78,7 +79,7 @@ export function Hero() {
             className="flex items-center justify-between rule pt-4 mb-10"
           >
             <span className="eyebrow">Independent, AI-First Developer</span>
-            <span className="eyebrow hidden sm:block">Full-Stack &amp; AI Engineer</span>
+            <span className="eyebrow hidden sm:block">Full-Stack Engineer &amp; Business/AI Consultant</span>
           </motion.div>
 
           <div className="max-w-4xl">
@@ -104,8 +105,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-7 max-w-2xl text-lg md:text-xl text-(--color-fg-muted) leading-relaxed"
             >
-              Full-stack product builds, AI integration, and hands-on teaching for students and
-              professionals.
+              Full-stack product builds, AI integration, business/AI transformation consulting, and
+              hands-on teaching for students and professionals.
             </motion.p>
 
             <motion.div
