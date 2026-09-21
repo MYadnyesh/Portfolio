@@ -487,6 +487,28 @@
   50% { transform: translateX(-50%) scale(1.15); opacity: 0.09; }
 }
 
+/* Monogram watermark. The PNG supplies only a silhouette via its alpha, so the
+   colour comes from a token and follows the theme instead of being baked bone. */
+@utility watermark-mark {
+  -webkit-mask-image: url("/images/ym-watermark.png");
+  mask-image: url("/images/ym-watermark.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-color: var(--color-fg);
+}
+
+/* Once the WebGL depth field is running it supplies the motes, so the CSS
+   starfield fades out rather than doubling up. */
+.three-active .starfield,
+.three-active .starfield-sparse {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
 /* ---- Custom crosshair cursor ----
    Only active once CustomCursor mounts (fine pointer, motion allowed), so a
    coarse pointer or a JS failure keeps the native cursor. Text fields are

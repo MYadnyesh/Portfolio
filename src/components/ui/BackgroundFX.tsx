@@ -1,10 +1,13 @@
 "use client";
 
+import { ThreeBackground } from "@/components/ui/ThreeBackground";
+
 /**
  * Fixed, full-viewport animated background.
- * Two slowly drifting starfield layers + a faint moving grid.
- * GPU-friendly (transform/opacity only). Motion is disabled under
- * prefers-reduced-motion via the global CSS rule.
+ * A WebGL depth field sits on top of a CSS starfield + faint moving grid.
+ * The CSS layers are the fallback: they fade out only once WebGL actually
+ * starts (`.three-active`), so no-JS, no-WebGL and reduced-motion all keep a
+ * working background instead of a flat page.
  */
 export function BackgroundFX() {
   return (
@@ -16,6 +19,15 @@ export function BackgroundFX() {
       <div className="absolute inset-[-20%] starfield animate-drift-slow" />
       {/* Drifting star layer 2 (offset, faster, sparser) */}
       <div className="absolute inset-[-20%] starfield-sparse animate-drift-fast" />
+
+      {/* Monogram watermark, placed under the mote field so particles drift in
+          front of it and it reads as part of the depth rather than an overlay. */}
+      <div className="absolute top-1/2 right-[-6vw] -translate-y-1/2 w-[62vw] max-w-220 aspect-square">
+        <div className="w-full h-full watermark-mark animate-drift-slow opacity-[0.055]" />
+      </div>
+
+      {/* WebGL parallax depth field */}
+      <ThreeBackground />
 
       {/* Faint moving grid */}
       <div className="absolute inset-0 bg-grid animate-grid-pan opacity-[0.05]" />
