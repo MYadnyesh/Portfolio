@@ -43,7 +43,7 @@ function PronunciationEntry() {
         <Volume2 className={`w-4 h-4 ${speaking ? "animate-pulse" : ""}`} aria-hidden="true" />
       </button>
       <span className="font-mono text-sm text-(--color-fg-muted)">/ˈjəd.nyeʃ/</span>
-      <span className="font-mono text-xs uppercase tracking-widest text-(--color-fg-subtle)">
+      <span className="font-mono text-xs uppercase tracking-meta text-(--color-fg-subtle)">
         proper noun
       </span>
       <span className="w-full text-base md:text-lg font-medium text-(--color-fg) max-w-md">
@@ -123,7 +123,7 @@ export function Hero() {
                 href={socialLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-[0.12em] text-(--color-fg) border-b border-(--color-fg-subtle) pb-1 hover:border-(--color-accent) hover:text-(--color-accent) transition-colors"
+                className="font-mono text-xs uppercase tracking-meta text-(--color-fg) border-b border-(--color-fg-subtle) pb-1 hover:border-(--color-accent) hover:text-(--color-accent) transition-colors"
               >
                 Book a call &rarr;
               </a>

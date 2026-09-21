@@ -44,7 +44,7 @@ export function Capabilities() {
               {/* Category label pinned left, over a fade */}
               <div className="absolute left-0 top-0 bottom-0 z-10 flex items-center pl-4 md:pl-8 pr-8 bg-linear-to-r from-(--color-bg) via-(--color-bg) to-transparent">
                 <span className="index-num text-sm mr-3">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-mono text-xs tracking-[0.12em] uppercase text-(--color-fg-muted) whitespace-nowrap">
+                <span className="font-mono text-xs tracking-label uppercase text-(--color-fg-muted) whitespace-nowrap">
                   {row.label}
                 </span>
               </div>

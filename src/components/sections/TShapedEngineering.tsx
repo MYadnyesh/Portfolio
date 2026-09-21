@@ -109,7 +109,7 @@ export function TShapedEngineering() {
           {/* Keyboard affordance */}
           <div className="flex items-center justify-between gap-4 mb-5">
             <span className="eyebrow">The diagram</span>
-            <span className="hidden sm:flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-(--color-fg-subtle)">
+            <span className="hidden sm:flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-meta text-(--color-fg-subtle)">
               <kbd className="border border-(--color-border-strong-solid) px-1.5 py-0.5 not-italic">
                 &larr;
               </kbd>
@@ -179,7 +179,7 @@ export function TShapedEngineering() {
               >
                 <span
                   className={cn(
-                    "block font-mono text-[0.7rem] uppercase tracking-[0.16em] mb-2 transition-colors",
+                    "block font-mono text-[0.7rem] uppercase tracking-label mb-2 transition-colors",
                     activeTab === "vertical"
                       ? "text-[#f4f0e8]/70"
                       : "text-(--color-fg-subtle) group-hover:text-(--color-accent-readable)"
@@ -232,7 +232,7 @@ export function TShapedEngineering() {
                 </span>
                 <span
                   className={cn(
-                    "block font-mono text-[0.7rem] uppercase tracking-[0.16em] mt-2 transition-colors",
+                    "block font-mono text-[0.7rem] uppercase tracking-label mt-2 transition-colors",
                     activeTab === "foundation"
                       ? "text-[#f4f0e8]/70"
                       : "text-(--color-fg-subtle) group-hover:text-(--color-accent-readable)"

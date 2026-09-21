@@ -23,7 +23,7 @@ const reveal = {
 };
 
 const linkClass =
-  "inline-flex items-center gap-2 font-mono text-xs tracking-wide uppercase text-(--color-fg-muted) hover:text-(--color-accent-readable) transition-colors focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-(--color-gold)";
+  "inline-flex items-center gap-2 font-mono text-xs tracking-meta uppercase text-(--color-fg-muted) hover:text-(--color-accent-readable) transition-colors focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-(--color-gold)";
 
 function ProjectLinks({ links, name }: { links: Project["links"]; name: string }) {
   if (!links.github && !links.live && !links.docs) return null;
@@ -94,7 +94,7 @@ function IndexRow({ project, index }: { project: Project; index: number }) {
 
         {/* Status / year / links */}
         <div className="lg:col-span-4 flex flex-col gap-4 lg:items-end lg:text-right">
-          <div className="font-mono text-xs uppercase tracking-wide text-(--color-fg-subtle) flex gap-4 lg:justify-end">
+          <div className="font-mono text-xs uppercase tracking-meta text-(--color-fg-subtle) flex gap-4 lg:justify-end">
             <span className="text-(--color-fg)">{project.status}</span>
             <span>{project.year}</span>
           </div>

@@ -58,7 +58,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="font-mono text-xs uppercase tracking-[0.12em] text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
+                    className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
                   >
                     {link.label}
                   </a>
@@ -94,19 +94,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 rule pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs uppercase tracking-widest text-(--color-fg-subtle)">
+          <p className="font-mono text-xs uppercase tracking-meta text-(--color-fg-subtle)">
             © 2026 {siteConfig.name}
           </p>
           <a
             href={socialLinks.email}
-            className="font-mono text-xs uppercase tracking-widest text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
+            className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
           >
             {emailAddress}
           </a>
           <button
             type="button"
             onClick={scrollToTop}
-            className="font-mono text-xs uppercase tracking-widest text-(--color-fg-muted) transition-colors hover:text-(--color-fg) inline-flex items-center gap-1.5 self-start sm:self-auto"
+            className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg) inline-flex items-center gap-1.5 self-start sm:self-auto"
           >
             Back to top <ArrowUp className="w-3.5 h-3.5" aria-hidden="true" />
           </button>

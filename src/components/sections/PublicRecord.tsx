@@ -14,7 +14,7 @@ export function PublicRecord() {
       <div className="section">
         <div className="mx-auto w-full max-w-360">
           <div className="flex items-center gap-4 mb-12">
-            <span className="font-mono text-xs tracking-[0.16em] uppercase text-(--color-bg)/60">
+            <span className="font-mono text-xs tracking-label uppercase text-(--color-bg)/60">
               02 / Experience
             </span>
             <span className="flex-1 h-px bg-(--color-bg)/15" />
@@ -33,7 +33,7 @@ export function PublicRecord() {
                     <span className="font-display font-bold text-2xl text-(--color-bg)/25 mr-3 align-baseline tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-mono text-[0.7rem] tracking-[0.06em] uppercase text-(--color-bg)/55">
+                    <span className="font-mono text-[0.7rem] tracking-meta uppercase text-(--color-bg)/55">
                       {job.period}
                     </span>
                   </div>
@@ -51,7 +51,7 @@ export function PublicRecord() {
                         />
                       )}
                     </div>
-                    <p className="mt-3 font-mono text-[0.72rem] tracking-[0.08em] uppercase text-(--color-bg)/55">
+                    <p className="mt-3 font-mono text-[0.72rem] tracking-meta uppercase text-(--color-bg)/55">
                       {job.role} · {job.type} · {job.location}
                     </p>
                   </div>

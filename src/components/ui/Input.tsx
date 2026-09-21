@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type InputHTMLAttributes, type LabelHTMLAttributes } from "react";
+import { forwardRef, type InputHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -153,10 +153,3 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 Select.displayName = "Select";
-
-export const Label = forwardRef<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement>>(
-  ({ className, ...props }, ref) => (
-    <label ref={ref} className={cn("label", className)} {...props} />
-  )
-);
-Label.displayName = "Label";

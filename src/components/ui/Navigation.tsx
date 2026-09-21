@@ -107,7 +107,7 @@ export function Navigation() {
                       scrollTo(item.href);
                     }}
                     className={cn(
-                      "font-mono text-xs tracking-widest uppercase transition-colors relative py-2",
+                      "font-mono text-xs tracking-meta uppercase transition-colors relative py-2",
                       isActive(item.href)
                         ? "text-(--color-accent)"
                         : "text-(--color-fg-muted) hover:text-(--color-fg)"
@@ -122,7 +122,7 @@ export function Navigation() {
                 href={socialLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono uppercase tracking-widest text-(--color-fg) border-b border-(--color-accent) pb-0.5 hover:text-(--color-accent) transition-colors ml-2"
+                className="text-xs font-mono uppercase tracking-meta text-(--color-fg) border-b border-(--color-accent) pb-0.5 hover:text-(--color-accent) transition-colors ml-2"
               >
                 Book a call &rarr;
               </a>
@@ -130,7 +130,7 @@ export function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden font-mono text-xs tracking-widest uppercase text-(--color-fg-muted) hover:text-(--color-fg) transition-colors min-h-11 min-w-11 flex items-center justify-center"
+              className="md:hidden font-mono text-xs tracking-meta uppercase text-(--color-fg-muted) hover:text-(--color-fg) transition-colors min-h-11 min-w-11 flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"

@@ -64,7 +64,7 @@ export function About() {
                 className={index !== 0 ? "rule pt-6 mt-6" : ""}
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <span className="font-mono text-xs tracking-wide text-(--color-fg-subtle) sm:w-24 sm:shrink-0">
+                  <span className="font-mono text-xs tracking-mono text-(--color-fg-subtle) sm:w-24 sm:shrink-0">
                     {item.period}
                   </span>
                   <div>

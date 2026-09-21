@@ -45,7 +45,7 @@ export function SplitFeature() {
         <div className="relative min-h-[520px] flex flex-col justify-between p-8 md:p-12 section-light">
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <span className="font-mono text-xs tracking-[0.14em] uppercase text-(--color-bg)/60">
+              <span className="font-mono text-xs tracking-label uppercase text-(--color-bg)/60">
                 05 / In the Lab
               </span>
             </div>
@@ -65,7 +65,7 @@ export function SplitFeature() {
               {["LOCAL LLMs", "AGENTS", "MCP", "RAG", "AUTOMATION"].map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center px-2.5 py-1 rounded-[var(--radius-sm)] font-mono text-[0.7rem] tracking-wide border border-(--color-bg)/25 text-(--color-bg)/70"
+                  className="inline-flex items-center px-2.5 py-1 rounded-[var(--radius-sm)] font-mono text-[0.7rem] tracking-meta border border-(--color-bg)/25 text-(--color-bg)/70"
                 >
                   {t}
                 </span>

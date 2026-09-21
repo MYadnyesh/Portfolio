@@ -20,6 +20,13 @@
   --space-section-md: 7rem;
   --space-section-lg: 9rem;
   --space-container: 90rem;
+
+  /* Tracking scale. Uppercase mono needs air; the smaller and more
+     decorative the label, the more of it. One value per role, so the same
+     kind of label never gets two different spacings in two sections. */
+  --tracking-label: 0.16em; /* eyebrows, structural category labels */
+  --tracking-meta: 0.1em;   /* uppercase mono links, nav, data rows */
+  --tracking-mono: 0.04em;  /* mono that is not uppercase */
 }
 
 @layer base {
@@ -99,44 +106,13 @@
 @utility text-balance { text-wrap: balance; }
 @utility text-pretty { text-wrap: pretty; }
 
-@utility animate-in {
-  animation: animate-in var(--transition-slow) ease-out forwards;
-}
-@keyframes animate-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@utility animate-fade-in {
-  animation: fade-in var(--transition-base) ease-out forwards;
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@utility animate-slide-up {
-  animation: slide-up var(--transition-slow) ease-out forwards;
-}
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@utility delay-100 { animation-delay: 100ms; }
-@utility delay-200 { animation-delay: 200ms; }
-@utility delay-300 { animation-delay: 300ms; }
-@utility delay-400 { animation-delay: 400ms; }
-@utility delay-500 { animation-delay: 500ms; }
-@utility delay-600 { animation-delay: 600ms; }
-
 /* Editorial primitives : replace the old glass/glow/gradient vocabulary */
 
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-fg-muted);
 }
@@ -150,10 +126,6 @@
 
 @utility rule {
   border-top: 1px solid var(--color-border);
-}
-
-@utility hairline-x {
-  border-left: 1px solid var(--color-border);
 }
 
 @utility text-serif-italic {
@@ -176,14 +148,6 @@
   outline: none;
 }
 
-@utility btn-primary {
-  @apply btn;
-  background-color: var(--color-fg);
-  color: var(--color-bg);
-  &:hover { background-color: var(--color-accent); color: var(--color-fg); }
-  &:active { transform: scale(0.98); }
-}
-
 @utility btn-secondary {
   @apply btn;
   background-color: transparent;
@@ -191,14 +155,6 @@
   border: 1px solid var(--color-border-strong-solid);
   &:hover { border-color: var(--color-accent); color: var(--color-accent); }
   &:active { transform: scale(0.98); }
-}
-
-@utility btn-ghost {
-  @apply btn;
-  background-color: transparent;
-  color: var(--color-fg-muted);
-  padding: 0.5rem 0;
-  &:hover { color: var(--color-fg); }
 }
 
 @utility btn-accent {
@@ -216,12 +172,6 @@
   padding: 1.5rem;
   transition: all var(--transition-base);
   &:hover { border-color: var(--color-border-strong-solid); }
-}
-
-@utility card-interactive {
-  @apply card;
-  cursor: pointer;
-  &:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 }
 
 @utility input {
@@ -242,7 +192,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tracking-meta);
   text-transform: uppercase;
   color: var(--color-fg-muted);
   margin-bottom: 0.5rem;
@@ -295,7 +245,7 @@
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--tracking-mono);
   border: 1px solid;
 }
 
@@ -322,14 +272,6 @@
   background-color: transparent;
   color: var(--color-exploring);
   border-color: color-mix(in srgb, var(--color-exploring) 40%, transparent);
-}
-
-@utility animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 /* ---- Harshith-inspired component utilities ---- */
@@ -424,14 +366,6 @@
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
-}
-
-/* Numbered index row (selected works / capabilities) */
-@utility index-row {
-  display: grid;
-  align-items: baseline;
-  border-top: 1px solid var(--color-border);
-  transition: background-color var(--transition-base), padding var(--transition-base);
 }
 
 @utility animate-techwall-left {

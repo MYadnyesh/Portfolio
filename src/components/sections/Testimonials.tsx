@@ -85,7 +85,7 @@ export function Testimonials() {
               </button>
             </div>
           </div>
-          <p className="font-mono text-xs uppercase tracking-[0.14em] mt-4 opacity-60">
+          <p className="font-mono text-xs uppercase tracking-meta mt-4 opacity-60">
             Real messages, I&apos;ll add these in.
           </p>
         </motion.div>
@@ -112,11 +112,11 @@ export function Testimonials() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <p className="font-display font-bold text-sm truncate">{t.name}</p>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.08em] text-(--color-fg-subtle) border border-(--color-border-strong-solid) rounded-[var(--radius-sm)] px-1.5 py-0.5">
+                    <span className="font-mono text-[0.65rem] uppercase tracking-meta text-(--color-fg-subtle) border border-(--color-border-strong-solid) rounded-[var(--radius-sm)] px-1.5 py-0.5">
                       {t.handle}
                     </span>
                   </div>
-                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.08em] text-(--color-fg-subtle) mt-1">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-meta text-(--color-fg-subtle) mt-1">
                     {t.timestamp}
                   </p>
                 </div>
