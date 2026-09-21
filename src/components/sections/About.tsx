@@ -64,7 +64,7 @@ export function About() {
                 className={index !== 0 ? "rule pt-6 mt-6" : ""}
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-                  <span className="font-mono text-xs tracking-mono text-(--color-fg-subtle) sm:w-24 sm:shrink-0">
+                  <span className="font-mono text-xs tracking-mono text-(--color-fg-muted) sm:w-24 sm:shrink-0">
                     {item.period}
                   </span>
                   <div>
@@ -93,7 +93,7 @@ export function About() {
               .map((cred) => (
                 <div key={cred.role}>
                   <p className="font-display text-base leading-snug mb-1">{cred.role}</p>
-                  <p className="text-xs text-(--color-fg-subtle) font-mono">
+                  <p className="text-xs text-(--color-fg-muted) font-mono">
                     {cred.org} · {cred.period}
                   </p>
                 </div>
@@ -113,7 +113,7 @@ export function About() {
             {community.map((c) => (
               <div key={c.role + c.org}>
                 <p className="font-display text-base leading-snug mb-1">{c.role}</p>
-                <p className="text-xs text-(--color-fg-subtle) font-mono mb-1">
+                <p className="text-xs text-(--color-fg-muted) font-mono mb-1">
                   {c.org} · {c.period}
                 </p>
                 <p className="text-sm text-(--color-fg-muted) leading-relaxed">{c.details}</p>
