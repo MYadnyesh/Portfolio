@@ -1,23 +1,33 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { tShapedData } from "@/data/portfolio";
-import { Card } from "@/components/ui/Card";
 
-type TabId = "vertical" | "cloud" | "fullstack" | "product" | "foundation";
+type TabId = "vertical" | "cloud" | "fullstack" | "product" | "consulting" | "foundation";
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: "vertical", label: "AI / LLMs, Depth" },
-  { id: "cloud", label: "Cloud" },
-  { id: "fullstack", label: "Full Stack" },
-  { id: "product", label: "Product / UX" },
-  { id: "foundation", label: "Foundation" },
-];
+const breadthTabs: TabId[] = ["cloud", "fullstack", "product", "consulting"];
+const tabOrder: TabId[] = [...breadthTabs, "vertical", "foundation"];
+
+const PANEL_ID = "t-shaped-panel";
+
+const tileBase =
+  "group relative w-full border-2 text-left transition-all duration-300 outline-none " +
+  "focus-visible:ring-2 focus-visible:ring-(--color-gold) focus-visible:ring-offset-2 " +
+  "focus-visible:ring-offset-(--color-bg-elevated)";
+
+const tileIdle =
+  "border-(--color-border-strong-solid) bg-(--color-bg-card) " +
+  "hover:-translate-y-1 hover:border-(--color-accent-readable) hover:shadow-[var(--shadow-lg)]";
+
+const tileActive =
+  "-translate-y-1 border-(--color-accent) bg-(--color-accent) shadow-[var(--shadow-lg)]";
+
+/* Blueprint rules are 3px so they read as structure, not as the site's hairlines. */
+const rule = "bg-(--color-border-strong-solid)";
 
 export function TShapedEngineering() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<TabId>("vertical");
 
   const tabData: Record<TabId, { title: string; description?: string; items: string[] }> = {
@@ -25,23 +35,27 @@ export function TShapedEngineering() {
     cloud: tShapedData.horizontal[0],
     fullstack: tShapedData.horizontal[1],
     product: tShapedData.horizontal[2],
+    consulting: tShapedData.horizontal[3],
     foundation: tShapedData.foundation,
   };
 
   const currentData = tabData[activeTab];
+  const kind =
+    activeTab === "vertical" ? "Depth" : activeTab === "foundation" ? "Foundation" : "Breadth";
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    const ids = tabs.map((t) => t.id);
-    const currentIndex = ids.indexOf(activeTab);
+    const currentIndex = tabOrder.indexOf(activeTab);
     let newIndex = currentIndex;
     switch (e.key) {
       case "ArrowRight":
+      case "ArrowDown":
         e.preventDefault();
-        newIndex = (currentIndex + 1) % ids.length;
+        newIndex = (currentIndex + 1) % tabOrder.length;
         break;
       case "ArrowLeft":
+      case "ArrowUp":
         e.preventDefault();
-        newIndex = (currentIndex - 1 + ids.length) % ids.length;
+        newIndex = (currentIndex - 1 + tabOrder.length) % tabOrder.length;
         break;
       case "Home":
         e.preventDefault();
@@ -49,13 +63,25 @@ export function TShapedEngineering() {
         break;
       case "End":
         e.preventDefault();
-        newIndex = ids.length - 1;
+        newIndex = tabOrder.length - 1;
         break;
       default:
         return;
     }
-    setActiveTab(ids[newIndex]);
+    const next = tabOrder[newIndex];
+    setActiveTab(next);
+    document.getElementById(`t-tab-${next}`)?.focus();
   };
+
+  const tabProps = (id: TabId) => ({
+    id: `t-tab-${id}`,
+    role: "tab" as const,
+    "aria-selected": activeTab === id,
+    "aria-controls": PANEL_ID,
+    tabIndex: activeTab === id ? 0 : -1,
+    onClick: () => setActiveTab(id),
+    onKeyDown: handleKeyDown,
+  });
 
   return (
     <section id="t-shaped" className="section bg-(--color-bg-elevated)">
@@ -69,144 +95,191 @@ export function TShapedEngineering() {
           <span className="eyebrow">Shape of the skillset</span>
           <h2 className="section-title mt-3">T-Shaped Engineering</h2>
           <p className="section-subtitle">
-            Vertical depth in AI/LLMs. Horizontal breadth across Cloud, Full Stack, and Product/UX,
-            resting on software engineering fundamentals.
+            Vertical depth in AI/LLMs. Horizontal breadth across Cloud, Full Stack, Product/UX, and
+            Business Consulting, resting on software engineering fundamentals.
           </p>
         </motion.div>
 
-        {/* Diagram: a literal T, drawn in hairlines */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-16"
+          className="mb-14"
         >
-          <div
-            role="tablist"
-            aria-label="Engineering breadth areas"
-            className="flex items-stretch justify-center gap-px bg-(--color-border) max-w-3xl mx-auto"
-          >
-            {(["cloud", "fullstack", "product"] as TabId[]).map((id) => (
+          {/* Keyboard affordance */}
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <span className="eyebrow">The diagram</span>
+            <span className="hidden sm:flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-(--color-fg-subtle)">
+              <kbd className="border border-(--color-border-strong-solid) px-1.5 py-0.5 not-italic">
+                &larr;
+              </kbd>
+              <kbd className="border border-(--color-border-strong-solid) px-1.5 py-0.5 not-italic">
+                &rarr;
+              </kbd>
+              to move
+            </span>
+          </div>
+
+          <div role="tablist" aria-label="Skillset areas" aria-orientation="horizontal">
+            {/* Crossbar: the breadth of the T */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {breadthTabs.map((id, i) => {
+                const active = activeTab === id;
+                return (
+                  <button
+                    key={id}
+                    {...tabProps(id)}
+                    className={cn(tileBase, active ? tileActive : tileIdle, "p-4 md:p-5")}
+                  >
+                    <span
+                      className={cn(
+                        "index-num block text-sm mb-2 transition-colors",
+                        active
+                          ? "text-[#f4f0e8]/70"
+                          : "text-(--color-fg-subtle) group-hover:text-(--color-accent-readable)"
+                      )}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={cn(
+                        "font-display font-bold uppercase leading-none tracking-tight text-lg md:text-xl transition-colors",
+                        active
+                          ? "text-[#f4f0e8]"
+                          : "text-(--color-fg-muted) group-hover:text-(--color-fg)"
+                      )}
+                    >
+                      {tabData[id].title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Bracket gathering the crossbar, ticks turned up */}
+            <div aria-hidden className="relative h-3.5 mt-4">
+              <span className={cn("absolute inset-x-0 bottom-0 h-[3px]", rule)} />
+              <span className={cn("absolute left-0 bottom-0 h-3.5 w-[3px]", rule)} />
+              <span className={cn("absolute right-0 bottom-0 h-3.5 w-[3px]", rule)} />
+            </div>
+
+            <div aria-hidden className="flex justify-center">
+              <span className={cn("h-10 w-[3px]", rule)} />
+            </div>
+
+            {/* Stem: the depth of the T */}
+            <div className="max-w-sm mx-auto">
               <button
-                key={id}
-                role="tab"
-                aria-selected={activeTab === id}
-                tabIndex={activeTab === id ? 0 : -1}
-                onClick={() => setActiveTab(id)}
-                onKeyDown={handleKeyDown}
+                {...tabProps("vertical")}
                 className={cn(
-                  "flex-1 bg-(--color-bg-elevated) px-4 py-5 text-center transition-colors",
-                  activeTab === id ? "bg-(--color-bg-card)" : "hover:bg-(--color-bg-card)/60"
+                  tileBase,
+                  activeTab === "vertical" ? tileActive : tileIdle,
+                  "px-5 py-6 text-center"
                 )}
               >
                 <span
                   className={cn(
-                    "font-display text-sm",
-                    activeTab === id ? "text-(--color-accent)" : "text-(--color-fg-muted)"
+                    "block font-mono text-[0.7rem] uppercase tracking-[0.16em] mb-2 transition-colors",
+                    activeTab === "vertical"
+                      ? "text-[#f4f0e8]/70"
+                      : "text-(--color-fg-subtle) group-hover:text-(--color-accent-readable)"
                   )}
                 >
-                  {tabData[id].title}
+                  Primary focus
+                </span>
+                <span
+                  className={cn(
+                    "font-display font-bold uppercase leading-none tracking-tight text-2xl md:text-3xl transition-colors",
+                    activeTab === "vertical"
+                      ? "text-[#f4f0e8]"
+                      : "text-(--color-fg) group-hover:text-(--color-fg)"
+                  )}
+                >
+                  {tShapedData.vertical.title}
                 </span>
               </button>
-            ))}
-          </div>
+            </div>
 
-          <div className="flex justify-center">
-            <div className="w-px h-8 bg-(--color-border)" />
-          </div>
+            <div aria-hidden className="flex justify-center">
+              <span className={cn("h-10 w-[3px]", rule)} />
+            </div>
 
-          <div className="max-w-xs mx-auto">
-            <button
-              role="tab"
-              aria-selected={activeTab === "vertical"}
-              tabIndex={activeTab === "vertical" ? 0 : -1}
-              onClick={() => setActiveTab("vertical")}
-              onKeyDown={handleKeyDown}
-              className={cn(
-                "w-full border px-4 py-6 text-center transition-colors",
-                activeTab === "vertical"
-                  ? "border-(--color-accent) bg-(--color-bg-card)"
-                  : "border-(--color-border) hover:border-(--color-border-strong-solid)"
-              )}
-            >
-              <span className="eyebrow block mb-1">Primary Focus</span>
-              <span className="font-display text-lg">{tShapedData.vertical.title}</span>
-            </button>
-          </div>
+            {/* Bracket opening down onto the foundation */}
+            <div aria-hidden className="relative h-3.5 max-w-3xl mx-auto">
+              <span className={cn("absolute inset-x-0 top-0 h-[3px]", rule)} />
+              <span className={cn("absolute left-0 top-0 h-3.5 w-[3px]", rule)} />
+              <span className={cn("absolute right-0 top-0 h-3.5 w-[3px]", rule)} />
+            </div>
 
-          <div className="flex justify-center">
-            <div className="w-px h-8 bg-(--color-border)" />
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <button
-              role="tab"
-              aria-selected={activeTab === "foundation"}
-              tabIndex={activeTab === "foundation" ? 0 : -1}
-              onClick={() => setActiveTab("foundation")}
-              onKeyDown={handleKeyDown}
-              className={cn(
-                "w-full border px-4 py-4 text-center transition-colors",
-                activeTab === "foundation"
-                  ? "border-(--color-accent) bg-(--color-bg-card)"
-                  : "border-(--color-border) hover:border-(--color-border-strong-solid)"
-              )}
-            >
-              <span className="font-display text-base">{tShapedData.foundation.title}</span>
-              <span className="block text-(--color-fg-subtle) text-xs mt-1">
-                The bedrock everything builds on
-              </span>
-            </button>
+            <div className="max-w-3xl mx-auto mt-4">
+              <button
+                {...tabProps("foundation")}
+                className={cn(
+                  tileBase,
+                  activeTab === "foundation" ? tileActive : tileIdle,
+                  "px-5 py-5 text-center"
+                )}
+              >
+                <span
+                  className={cn(
+                    "font-display font-bold uppercase leading-none tracking-tight text-lg md:text-2xl transition-colors",
+                    activeTab === "foundation"
+                      ? "text-[#f4f0e8]"
+                      : "text-(--color-fg-muted) group-hover:text-(--color-fg)"
+                  )}
+                >
+                  {tShapedData.foundation.title}
+                </span>
+                <span
+                  className={cn(
+                    "block font-mono text-[0.7rem] uppercase tracking-[0.16em] mt-2 transition-colors",
+                    activeTab === "foundation"
+                      ? "text-[#f4f0e8]/70"
+                      : "text-(--color-fg-subtle) group-hover:text-(--color-accent-readable)"
+                  )}
+                >
+                  The bedrock everything builds on
+                </span>
+              </button>
+            </div>
           </div>
         </motion.div>
 
         {/* Detail panel */}
-        <Card padding="lg">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6">
-            <div>
-              <h3 className="font-display text-xl">{currentData.title}</h3>
-              {"description" in currentData && currentData.description && (
-                <p className="text-(--color-fg-muted) text-lg md:text-xl mt-1 max-w-lg">{currentData.description}</p>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-1">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={cn(
-                    "px-2.5 py-1 font-mono text-xs tracking-wide uppercase transition-colors",
-                    activeTab === tab.id
-                      ? "text-(--color-accent)"
-                      : "text-(--color-fg-subtle) hover:text-(--color-fg-muted)"
-                  )}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+        <div
+          id={PANEL_ID}
+          role="tabpanel"
+          aria-labelledby={`t-tab-${activeTab}`}
+          tabIndex={0}
+          className="border-2 border-(--color-border-strong-solid) bg-(--color-bg-card) p-6 md:p-8"
+        >
+          <div className="mb-8">
+            <span className="eyebrow">{kind}</span>
+            <h3 className="font-display font-bold uppercase tracking-tight text-2xl md:text-3xl mt-2">
+              {currentData.title}
+            </h3>
+            {currentData.description && (
+              <p className="text-(--color-fg-muted) text-lg md:text-xl mt-2 max-w-2xl">
+                {currentData.description}
+              </p>
+            )}
           </div>
 
-          <div
-            id={`panel-${activeTab}`}
-            role="tabpanel"
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1"
-            ref={containerRef}
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1">
             {currentData.items.map((item, index) => (
               <motion.div
-                key={item}
+                key={`${activeTab}-${item}`}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
-                className="flex items-baseline gap-2 py-1.5 border-b border-(--color-border)"
+                className="flex items-baseline gap-3 py-2.5 border-b border-(--color-border)"
               >
                 <span className="index-num text-xs">{String(index + 1).padStart(2, "0")}</span>
-                <span className="text-sm text-(--color-fg)">{item}</span>
+                <span className="text-sm md:text-base text-(--color-fg)">{item}</span>
               </motion.div>
             ))}
           </div>
-        </Card>
+        </div>
       </div>
     </section>
   );

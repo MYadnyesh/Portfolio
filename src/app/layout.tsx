@@ -4,6 +4,7 @@ import { siteConfig } from "@/data/portfolio";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { BackgroundFX } from "@/components/ui/BackgroundFX";
 import { ContentProtection } from "@/components/ui/ContentProtection";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import "./globals.css";
 
@@ -92,6 +93,7 @@ export default function RootLayout({
       <body className="min-h-screen text-(--color-fg) antialiased">
         <BackgroundFX />
         <ContentProtection />
+        <CustomCursor />
         {children}
         <GoogleAnalytics />
         <Script

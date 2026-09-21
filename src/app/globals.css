@@ -486,3 +486,78 @@
   0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.05; }
   50% { transform: translateX(-50%) scale(1.15); opacity: 0.09; }
 }
+
+/* ---- Custom crosshair cursor ----
+   Only active once CustomCursor mounts (fine pointer, motion allowed), so a
+   coarse pointer or a JS failure keeps the native cursor. Text fields are
+   excluded so the caret I-beam survives. */
+html.has-custom-cursor,
+html.has-custom-cursor *:not(input):not(textarea):not(select) {
+  cursor: none;
+}
+
+.cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.cursor-layer.is-visible { opacity: 1; }
+.cursor-layer.is-text { opacity: 0; }
+
+.cursor-cross,
+.cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.cursor-cross { width: 17px; height: 17px; }
+.cursor-cross::before,
+.cursor-cross::after {
+  content: "";
+  position: absolute;
+  background: var(--color-fg);
+  transition: background-color 200ms ease, transform var(--transition-base);
+}
+.cursor-cross::before {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.cursor-cross::after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.cursor-layer.is-interactive .cursor-cross::before,
+.cursor-layer.is-interactive .cursor-cross::after {
+  background: var(--color-accent-readable);
+}
+.cursor-layer.is-interactive .cursor-cross::before { transform: translateY(-50%) scaleX(0.4); }
+.cursor-layer.is-interactive .cursor-cross::after { transform: translateX(-50%) scaleY(0.4); }
+
+.cursor-ring { width: 42px; height: 42px; }
+.cursor-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-accent-readable);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: scale(0.35);
+  transition: opacity 260ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cursor-layer.is-interactive .cursor-ring::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.cursor-layer.is-interactive.is-pressed .cursor-ring::before { transform: scale(0.8); }
