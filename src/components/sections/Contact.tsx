@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
@@ -253,6 +254,28 @@ export function Contact() {
                 By submitting, you agree to the data handling note above. No spam, ever.
               </p>
             </form>
+
+            {/* Alternative to the form above: book directly on the calendar,
+                no message required. Added below Send Message per request,
+                the form itself is untouched. */}
+            <div className="mt-10 pt-8 border-t border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="eyebrow whitespace-nowrap">Or skip the form</span>
+                <span aria-hidden="true" className="flex-1 h-px bg-border" />
+              </div>
+              <p className="text-sm text-fg mb-5 max-w-md border-l-2 border-accent bg-accent-muted pl-4 py-3">
+                Rather just pick a time? Book a 30-minute call directly below, no message required.
+              </p>
+              <div
+                className="calendly-inline-widget border border-border"
+                data-url={`${socialLinks.calendly}?hide_gdpr_banner=1&background_color=14120f&text_color=e8e4dc&primary_color=7d1f2e`}
+                style={{ minWidth: "280px", height: "650px" }}
+              />
+              <Script
+                src="https://assets.calendly.com/assets/external/widget.js"
+                strategy="lazyOnload"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
