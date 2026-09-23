@@ -26,7 +26,7 @@ export function PhotoPlaceholder({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-(--color-bg-elevated) border border-(--color-border)",
+        "relative overflow-hidden bg-bg-elevated border border-border",
         className
       )}
       style={{ aspectRatio: ratio }}
@@ -36,11 +36,11 @@ export function PhotoPlaceholder({
         <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-4">
-          <div className="w-10 h-10 rounded-full border border-(--color-border-strong-solid) flex items-center justify-center">
-            <span className="text-(--color-fg-subtle) text-lg leading-none">+</span>
+          <div className="w-10 h-10 rounded-full border border-border-strong-solid flex items-center justify-center">
+            <span className="text-fg-subtle text-lg leading-none">+</span>
           </div>
           <span className="eyebrow">{label}</span>
-          <span className="font-mono text-[0.65rem] text-(--color-fg-subtle)">
+          <span className="font-mono text-[0.65rem] text-fg-subtle">
             {alt || "photo slot"}
           </span>
         </div>

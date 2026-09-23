@@ -15,7 +15,7 @@ The architecture uses a custom "Clay" design system built with CSS custom proper
     status: "Live",
     links: {
       github: "https://github.com/MYadnyesh/Outskill-Hackathon",
-      live: "https://prism-outskill.vercel.app", // placeholder - will update
+      live: "https://demo-prism-yadnyesh.netlify.app",
       docs: "https://github.com/MYadnyesh/Outskill-Hackathon/blob/main/docs/FEATURES.md"
     },
     screenshots: [
@@ -475,8 +475,8 @@ export const languages = [
 export const siteConfig = {
   name: "Yadnyesh Mulay",
   title: "AI-first T-shaped Full Stack Developer & Business/AI Consultant",
-  description: "I build useful software and advise on AI-driven business transformation. I turn ideas into working technical prototypes, and turn processes into AI & agentic AI roadmaps.",
+  description: "Yadnyesh Mulay, AI-first full-stack developer and business/AI consultant. I build useful software and advise on AI-driven business transformation. I turn ideas into working technical prototypes, and turn processes into AI & agentic AI roadmaps.",
   url: "https://yadnyesh.dev",
   ogImage: "/images/og-image.png",
-  keywords: ["Full Stack Developer", "AI Engineer", "LLM Applications", "Business Consultant", "AI Transformation Consultant", "Agentic AI", "Technical Product Delivery", "Business Process Optimization", "No-Code Automation", "Vibe Coding", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Portfolio"]
+  keywords: ["Yadnyesh", "Yadnyesh Mulay", "Full Stack Developer", "AI Engineer", "LLM Applications", "Business Consultant", "AI Transformation Consultant", "Agentic AI", "Technical Product Delivery", "Business Process Optimization", "No-Code Automation", "Vibe Coding", "React", "Next.js", "TypeScript", "Python", "FastAPI", "Portfolio"]
 };

@@ -6,7 +6,7 @@ import { socialLinks } from "@/data/portfolio";
 
 export function NextStep() {
   return (
-    <section id="next-step" className="section bg-(--color-bg) text-(--color-fg)">
+    <section id="next-step" className="section bg-bg text-fg">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -20,7 +20,7 @@ export function NextStep() {
             Start with the{" "}
             <span className="text-serif-italic lowercase">real</span> idea.
           </h2>
-          <p className="text-lg md:text-xl text-(--color-fg-muted) mt-6 max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-fg-muted mt-6 max-w-2xl leading-relaxed">
             Tell me what you&apos;re building or trying to learn. I&apos;ll tell you if I can help.
           </p>
 

@@ -29,7 +29,7 @@ export function Footer() {
 
   return (
     <footer
-      className="bg-(--color-bg) text-(--color-fg) border-t border-(--color-border) overflow-hidden"
+      className="bg-bg text-fg border-t border-border overflow-hidden"
       role="contentinfo"
     >
       <div className="container section">
@@ -43,7 +43,7 @@ export function Footer() {
           </a>
           <a
             href={socialLinks.email}
-            className="font-display font-bold text-2xl md:text-4xl tracking-tight underline decoration-transparent underline-offset-8 transition-colors hover:text-(--color-accent-readable) hover:decoration-(--color-accent-readable)"
+            className="font-display font-bold text-2xl md:text-4xl tracking-tight underline decoration-transparent underline-offset-8 transition-colors hover:text-accent-readable hover:decoration-accent-readable"
           >
             {emailAddress}
           </a>
@@ -58,7 +58,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
+                    className="font-mono text-xs uppercase tracking-meta text-fg-muted transition-colors hover:text-fg"
                   >
                     {link.label}
                   </a>
@@ -78,7 +78,7 @@ export function Footer() {
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="w-10 h-10 rounded-full bg-(--color-accent) text-(--color-fg) flex items-center justify-center transition-colors hover:bg-(--color-accent-hover)"
+                  className="w-10 h-10 rounded-full bg-accent text-fg flex items-center justify-center transition-colors hover:bg-accent-hover"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -94,19 +94,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 rule pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs uppercase tracking-meta text-(--color-fg-subtle)">
+          <p className="font-mono text-xs uppercase tracking-meta text-fg-subtle">
             © 2026 {siteConfig.name}
           </p>
           <a
             href={socialLinks.email}
-            className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg)"
+            className="font-mono text-xs uppercase tracking-meta text-fg-muted transition-colors hover:text-fg"
           >
             {emailAddress}
           </a>
           <button
             type="button"
             onClick={scrollToTop}
-            className="font-mono text-xs uppercase tracking-meta text-(--color-fg-muted) transition-colors hover:text-(--color-fg) inline-flex items-center gap-1.5 self-start sm:self-auto"
+            className="font-mono text-xs uppercase tracking-meta text-fg-muted transition-colors hover:text-fg inline-flex items-center gap-1.5 self-start sm:self-auto"
           >
             Back to top <ArrowUp className="w-3.5 h-3.5" aria-hidden="true" />
           </button>

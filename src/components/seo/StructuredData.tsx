@@ -4,10 +4,15 @@ export function StructuredData() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${siteConfig.url}/#person`,
     name: siteConfig.name,
+    alternateName: "Yadnyesh",
+    givenName: "Yadnyesh",
+    familyName: "Mulay",
+    description: siteConfig.description,
     url: siteConfig.url,
-    image: `${siteConfig.url}${siteConfig.ogImage}`,
-    sameAs: Object.values(socialLinks),
+    image: `${siteConfig.url}/images/photos/Yadnyesh.png`,
+    sameAs: Object.values(socialLinks).filter((link) => link.startsWith("http")),
     jobTitle: "AI-first T-shaped Full Stack Developer / Business & AI Transformation Consultant",
     worksFor: work
       .filter((job) => job.current)
@@ -67,16 +72,20 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${siteConfig.url}/#website`,
     name: siteConfig.name,
+    alternateName: ["Yadnyesh", "yadnyesh.dev"],
     url: siteConfig.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    publisher: { "@id": `${siteConfig.url}/#person` },
+  };
+
+  // Tells Google this page is the profile of the Person above.
+  const profilePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: siteConfig.url,
+    name: `${siteConfig.name} | ${siteConfig.title}`,
+    mainEntity: { "@id": `${siteConfig.url}/#person` },
   };
 
   const projectSchemas = projects
@@ -132,7 +141,7 @@ export function StructuredData() {
       description: edu.details,
     }));
 
-  const allSchemas = [personSchema, websiteSchema, ...workOrgSchemas, ...projectSchemas, ...serviceSchemas, ...educationSchemas];
+  const allSchemas = [personSchema, websiteSchema, profilePageSchema, ...workOrgSchemas, ...projectSchemas, ...serviceSchemas, ...educationSchemas];
 
   return (
     <script

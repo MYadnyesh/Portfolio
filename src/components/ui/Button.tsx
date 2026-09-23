@@ -11,13 +11,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", loading, disabled, children, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center gap-2 font-medium rounded-[var(--radius-md)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-(--color-bg) disabled:opacity-50 disabled:cursor-not-allowed";
+    const baseStyles = "inline-flex items-center justify-center gap-2 font-medium rounded-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed";
 
     const variants = {
-      primary: "bg-(--color-fg) text-(--color-bg) hover:bg-(--color-accent) hover:text-(--color-fg) active:scale-[0.98] focus-visible:ring-(--color-accent)",
-      secondary: "bg-transparent text-(--color-fg) border border-(--color-border-strong-solid) hover:border-(--color-accent) hover:text-(--color-accent) active:scale-[0.98] focus-visible:ring-(--color-border-strong-solid)",
-      ghost: "bg-transparent text-(--color-fg-muted) hover:text-(--color-fg) active:scale-[0.98]",
-      accent: "bg-(--color-accent) text-(--color-fg) hover:bg-(--color-accent-hover) active:scale-[0.98] focus-visible:ring-(--color-accent)",
+      primary: "bg-fg text-bg hover:bg-accent hover:text-fg active:scale-[0.98] focus-visible:ring-accent",
+      secondary: "bg-transparent text-fg border border-border-strong-solid hover:border-accent hover:text-accent active:scale-[0.98] focus-visible:ring-border-strong-solid",
+      ghost: "bg-transparent text-fg-muted hover:text-fg active:scale-[0.98]",
+      accent: "bg-accent text-fg hover:bg-accent-hover active:scale-[0.98] focus-visible:ring-accent",
     };
 
     const sizes = {

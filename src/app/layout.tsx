@@ -11,10 +11,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} | AI-First Full-Stack Developer`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: siteConfig.title,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
     images: [
       {
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.title,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: "@yadnyesh_mulay",
@@ -90,7 +93,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen text-(--color-fg) antialiased">
+      <body className="min-h-screen text-fg antialiased">
         <BackgroundFX />
         <ContentProtection />
         <CustomCursor />

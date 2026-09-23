@@ -71,7 +71,7 @@ export function Testimonials() {
                 type="button"
                 onClick={() => scrollByCard(-1)}
                 aria-label="Previous testimonials"
-                className="w-11 h-11 flex items-center justify-center border border-current/30 rounded-[var(--radius-md)] transition-colors hover:bg-(--color-bg) hover:text-(--color-fg)"
+                className="w-11 h-11 flex items-center justify-center border border-current/30 rounded-md transition-colors hover:bg-bg hover:text-fg"
               >
                 <ArrowLeft className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -79,7 +79,7 @@ export function Testimonials() {
                 type="button"
                 onClick={() => scrollByCard(1)}
                 aria-label="Next testimonials"
-                className="w-11 h-11 flex items-center justify-center border border-current/30 rounded-[var(--radius-md)] transition-colors hover:bg-(--color-bg) hover:text-(--color-fg)"
+                className="w-11 h-11 flex items-center justify-center border border-current/30 rounded-md transition-colors hover:bg-bg hover:text-fg"
               >
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </button>
@@ -103,7 +103,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="snap-start shrink-0 w-[85%] sm:w-[380px] bg-(--color-bg) text-(--color-fg) border border-(--color-border) rounded-[var(--radius-lg)] p-6"
+              className="snap-start shrink-0 w-[85%] sm:w-95 bg-bg text-fg border border-border rounded-lg p-6"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
@@ -112,16 +112,16 @@ export function Testimonials() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <p className="font-display font-bold text-sm truncate">{t.name}</p>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-meta text-(--color-fg-subtle) border border-(--color-border-strong-solid) rounded-[var(--radius-sm)] px-1.5 py-0.5">
+                    <span className="font-mono text-[0.65rem] uppercase tracking-meta text-fg-subtle border border-border-strong-solid rounded-sm px-1.5 py-0.5">
                       {t.handle}
                     </span>
                   </div>
-                  <p className="font-mono text-[0.65rem] uppercase tracking-meta text-(--color-fg-subtle) mt-1">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-meta text-fg-subtle mt-1">
                     {t.timestamp}
                   </p>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed text-(--color-fg-muted) mt-4 whitespace-pre-line">
+              <p className="text-sm leading-relaxed text-fg-muted mt-4 whitespace-pre-line">
                 {t.body}
               </p>
             </motion.article>

@@ -38,15 +38,15 @@ function PronunciationEntry() {
         type="button"
         onClick={playPronunciation}
         aria-label="Play pronunciation of Yadnyesh"
-        className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-(--color-border) text-(--color-fg) transition-colors hover:border-(--color-accent) hover:text-(--color-accent)"
+        className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-fg transition-colors hover:border-accent hover:text-accent"
       >
         <Volume2 className={`w-4 h-4 ${speaking ? "animate-pulse" : ""}`} aria-hidden="true" />
       </button>
-      <span className="font-mono text-sm text-(--color-fg-muted)">/ˈjəd.nyeʃ/</span>
-      <span className="font-mono text-xs uppercase tracking-meta text-(--color-fg-subtle)">
+      <span className="font-mono text-sm text-fg-muted">/ˈjəd.nyeʃ/</span>
+      <span className="font-mono text-xs uppercase tracking-meta text-fg-subtle">
         proper noun
       </span>
-      <span className="w-full text-base md:text-lg font-medium text-(--color-fg) max-w-md">
+      <span className="w-full text-base md:text-lg font-medium text-fg max-w-md">
         ships fast. builds real things. adds AI where it earns its place.
       </span>
     </div>
@@ -87,13 +87,14 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display font-bold uppercase leading-[0.92] tracking-tight text-(--color-fg)"
+              className="font-display font-bold uppercase leading-[0.92] tracking-tight text-fg"
               style={{ fontSize: "clamp(3rem, 7vw, 6.75rem)" }}
             >
+              <span className="sr-only">Yadnyesh Mulay: </span>
               I build useful things
               <br />
               and ship them with{" "}
-              <span className="text-serif-italic lowercase text-(--color-accent-readable)">
+              <span className="text-serif-italic lowercase text-accent-readable">
                 ai
               </span>
               .
@@ -103,7 +104,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-7 max-w-2xl text-lg md:text-xl text-(--color-fg-muted) leading-relaxed"
+              className="mt-7 max-w-2xl text-lg md:text-xl text-fg-muted leading-relaxed"
             >
               Full-stack product builds, AI integration, business/AI transformation consulting, and
               hands-on teaching for students and professionals.
@@ -123,7 +124,7 @@ export function Hero() {
                 href={socialLinks.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-meta text-(--color-fg) border-b border-(--color-fg-subtle) pb-1 hover:border-(--color-accent) hover:text-(--color-accent) transition-colors"
+                className="font-mono text-xs uppercase tracking-meta text-fg border-b border-fg-subtle pb-1 hover:border-accent hover:text-accent transition-colors"
               >
                 Book a call &rarr;
               </a>
@@ -164,17 +165,17 @@ export function Hero() {
       </div>
 
       {/* Marquee ticker */}
-      <div className="border-y border-(--color-border) overflow-hidden">
+      <div className="border-y border-border overflow-hidden">
         <div className="marquee-track py-4">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex items-center shrink-0" aria-hidden={dup === 1}>
               {marqueeWords.map((word) => (
                 <span
                   key={word}
-                  className="font-display font-bold text-lg md:text-2xl uppercase tracking-tight text-(--color-fg-muted) mx-6 flex items-center gap-6"
+                  className="font-display font-bold text-lg md:text-2xl uppercase tracking-tight text-fg-muted mx-6 flex items-center gap-6"
                 >
                   {word}
-                  <span className="text-(--color-accent) font-mono text-base">-</span>
+                  <span className="text-accent font-mono text-base">-</span>
                 </span>
               ))}
             </div>

@@ -25,7 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           id={inputId}
           className={cn(
             "input",
-            error && "border-(--color-error)",
+            error && "border-error",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -33,12 +33,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="mt-1.5 text-sm text-(--color-error)" role="alert">
+          <p id={`${inputId}-error`} className="mt-1.5 text-sm text-error" role="alert">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${inputId}-helper`} className="mt-1.5 text-sm text-(--color-fg-subtle)">
+          <p id={`${inputId}-helper`} className="mt-1.5 text-sm text-fg-subtle">
             {helperText}
           </p>
         )}
@@ -70,8 +70,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "input resize-y min-h-[100px]",
-            error && "border-(--color-error)",
+            "input resize-y min-h-25",
+            error && "border-error",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -79,12 +79,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="mt-1.5 text-sm text-(--color-error)" role="alert">
+          <p id={`${inputId}-error`} className="mt-1.5 text-sm text-error" role="alert">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${inputId}-helper`} className="mt-1.5 text-sm text-(--color-fg-subtle)">
+          <p id={`${inputId}-helper`} className="mt-1.5 text-sm text-fg-subtle">
             {helperText}
           </p>
         )}
@@ -119,7 +119,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={selectId}
           className={cn(
             "input appearance-none",
-            error && "border-(--color-error)",
+            error && "border-error",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -138,12 +138,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ))}
         </select>
         {error && (
-          <p id={`${selectId}-error`} className="mt-1.5 text-sm text-(--color-error)" role="alert">
+          <p id={`${selectId}-error`} className="mt-1.5 text-sm text-error" role="alert">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${selectId}-helper`} className="mt-1.5 text-sm text-(--color-fg-subtle)">
+          <p id={`${selectId}-helper`} className="mt-1.5 text-sm text-fg-subtle">
             {helperText}
           </p>
         )}
