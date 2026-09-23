@@ -1,0 +1,26 @@
+/* Brand tokens — mirrors src/styles/tokens.css in the main app.
+   If the site palette or fonts change, update both files together. */
+
+:root {
+  --color-bg: #0a0908;
+  --color-bg-elevated: #14120f;
+  --color-bg-card: #1d1a16;
+  --color-border: #221f19;
+  --color-border-strong-solid: #3a352c;
+
+  --color-fg: #e8e4dc;
+  --color-fg-muted: #8f887b;
+  --color-fg-subtle: #56514a;
+
+  --color-accent: #7d1f2e;
+  --color-accent-hover: #a32639;
+  --color-accent-readable: #d65d72;
+  --color-gold: #b4924c;
+
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }

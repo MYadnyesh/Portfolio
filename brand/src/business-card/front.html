@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Business card — front</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../_tokens.css" />
+<style>
+  /* US business card: 3.5in x 2in trim, 0.125in bleed on every edge. */
+  @page { size: 3.75in 2.25in; margin: 0; }
+  html, body {
+    margin: 0; padding: 0; width: 3.75in; height: 2.25in;
+    background: var(--color-bg);
+  }
+  .card {
+    position: relative;
+    width: 3.75in; height: 2.25in;
+    overflow: hidden;
+  }
+  /* Trim guide — visual only, not printed (removed for the print/export build). */
+  .trim {
+    position: absolute; inset: 0.125in;
+    outline: 1px dashed rgba(232, 228, 220, 0.18);
+    pointer-events: none;
+  }
+  .safe {
+    position: absolute; inset: 0.28in;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .mark { width: 0.34in; height: auto; margin-bottom: 0.16in; opacity: 0.92; }
+  .name {
+    font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+    font-size: 15.5pt; letter-spacing: -0.01em; line-height: 1;
+    color: var(--color-fg); margin: 0;
+  }
+  .rule { width: 0.42in; height: 2px; background: var(--color-accent); margin: 0.1in 0; }
+  .title { margin: 0; }
+  .title span {
+    display: block;
+    font-family: var(--font-mono); font-size: 7.4pt; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.55;
+    color: var(--color-fg-muted);
+  }
+  .title span.accent { color: var(--color-accent-readable); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="trim"></div>
+    <div class="safe">
+      <img class="mark" src="../../assets/ym-mark-clean.png" alt="" />
+      <p class="name">Yadnyesh Mulay</p>
+      <div class="rule"></div>
+      <p class="title">
+        <span class="accent">AI-First Full-Stack Developer</span>
+        <span>Business &amp; AI Consultant</span>
+      </p>
+    </div>
+  </div>
+<script>if(!/proof=1/.test(location.search)){document.querySelectorAll(".trim").forEach(function(el){el.style.display="none";});}</script>
+</body>
+</html>

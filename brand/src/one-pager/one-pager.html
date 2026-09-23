@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>One-pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../_tokens.css" />
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  html, body { margin: 0; padding: 0; width: 8.5in; height: 11in; background: #f4ede2; }
+  .page { position: relative; width: 8.5in; height: 11in; overflow: hidden; font-family: var(--font-body); }
+
+  .masthead {
+    background: var(--color-bg); height: 1.02in; padding: 0 0.6in;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 0.15in; }
+  .brand img { width: 0.38in; height: auto; opacity: 0.92; }
+  .brand-text .name { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 14pt; color: var(--color-fg); letter-spacing: -0.01em; line-height: 1; }
+  .brand-text .title { font-family: var(--font-mono); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent-readable); margin-top: 0.05in; }
+  .masthead-contact { text-align: right; font-family: var(--font-mono); font-size: 7pt; color: var(--color-fg-muted); line-height: 1.7; }
+
+  .body { padding: 0.32in 0.6in 0 0.6in; }
+
+  .eyebrow { font-family: var(--font-mono); font-size: 7.5pt; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-accent); margin: 0 0 0.08in 0; }
+  h1.headline { font-family: var(--font-display); font-weight: 700; font-size: 20pt; color: #0a0908; margin: 0 0 0.14in 0; line-height: 1.15; letter-spacing: -0.01em; }
+  h1.headline em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--color-accent); }
+  p.intro { font-size: 9.5pt; color: #4a4438; line-height: 1.6; margin: 0 0 0.3in 0; max-width: 6.4in; }
+
+  h2.section-title {
+    font-family: var(--font-mono); font-size: 8pt; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.12em; color: #0a0908; margin: 0 0 0.14in 0;
+    border-top: 1px solid #c9c1af; padding-top: 0.14in;
+  }
+
+  /* Services grid */
+  .services { display: grid; grid-template-columns: 1fr 1fr; gap: 0.1in 0.4in; margin-bottom: 0.06in; }
+  .service-cat { font-family: var(--font-display); font-weight: 700; font-size: 9pt; color: #0a0908; margin: 0 0 0.02in 0; }
+  .service-items { font-size: 8pt; color: #6f6858; line-height: 1.4; margin: 0; }
+
+  /* Work */
+  .work-item { margin-bottom: 0.16in; }
+  .work-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.2in; }
+  .work-name { font-family: var(--font-display); font-weight: 700; font-size: 10.5pt; color: #0a0908; }
+  .work-metric { font-family: var(--font-mono); font-size: 7pt; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+  .work-desc { font-size: 8.3pt; color: #4a4438; line-height: 1.5; margin: 0.03in 0 0.05in 0; max-width: 7in; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.06in; }
+  .chip { font-family: var(--font-mono); font-size: 6.6pt; color: #6f6858; border: 1px solid #c9c1af; border-radius: 2px; padding: 0.02in 0.07in; }
+
+  /* Credentials */
+  .credentials { font-size: 8.3pt; color: #4a4438; line-height: 1.8; }
+  .credentials strong { color: #0a0908; font-weight: 600; }
+
+  /* Footer CTA band */
+  .cta {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1.05in;
+    background: var(--color-bg);
+    padding: 0 0.6in; display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-text .cta-head { font-family: var(--font-display); font-weight: 700; font-size: 13pt; color: var(--color-fg); }
+  .cta-text .cta-sub { font-family: var(--font-mono); font-size: 7.5pt; color: var(--color-fg-muted); margin-top: 0.05in; letter-spacing: 0.02em; }
+  .cta-text .cta-sub a { color: var(--color-accent-readable); text-decoration: none; }
+  .cta img { width: 0.62in; height: 0.62in; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand">
+      <img src="../../assets/ym-mark-clean.png" alt="" />
+      <div class="brand-text">
+        <div class="name">Yadnyesh Mulay</div>
+        <div class="title">Full-Stack Development &amp; AI Consulting</div>
+      </div>
+    </div>
+    <div class="masthead-contact">
+      <div>yadnyeshmulay@gmail.com</div>
+      <div>yadnyesh.dev</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <p class="eyebrow">Capability Overview</p>
+    <h1 class="headline">I build useful software, and advise on <em>AI-driven</em> transformation.</h1>
+    <p class="intro">
+      AI-first full-stack developer and business/AI consultant. I turn ideas into working
+      technical prototypes, and turn processes into AI &amp; agentic AI roadmaps, moving between
+      product decisions, system architecture, and the model layer itself.
+    </p>
+
+    <h2 class="section-title">What I Help With</h2>
+    <div class="services">
+      <div>
+        <p class="service-cat">Build</p>
+        <p class="service-items">MVP development, full-stack applications, web applications, technical prototypes</p>
+      </div>
+      <div>
+        <p class="service-cat">Enhance Intelligence</p>
+        <p class="service-items">LLM integration, AI automation, agentic workflows, retrieval systems (RAG)</p>
+      </div>
+      <div>
+        <p class="service-cat">Consult</p>
+        <p class="service-items">AI &amp; agentic AI transformation roadmaps, technical product &amp; program delivery, business process optimization, no-code/low-code automation</p>
+      </div>
+      <div>
+        <p class="service-cat">Architect</p>
+        <p class="service-items">System design, technology selection, scalability planning, API strategy</p>
+      </div>
+      <div>
+        <p class="service-cat">Product</p>
+        <p class="service-items">UX + AI-native strategy, product discovery, feature prioritization, metrics design</p>
+      </div>
+      <div>
+        <p class="service-cat">Explore</p>
+        <p class="service-items">Emerging tech feasibility, local LLM deployment, agent architecture, AI infrastructure</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Selected Work</h2>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-name">Prism</span>
+        <span class="work-metric">3 modes &middot; 2 APIs &middot; live</span>
+      </div>
+      <p class="work-desc">Paste a website, pick a mode: a fast TL;DR, a full song written from the page, or a kid-friendly explanation with a story and a quiz &mdash; real AI under the hood, end to end.</p>
+      <div class="chips">
+        <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Gemini API</span><span class="chip">ElevenLabs</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-name">Gmail &amp; Google Chat Sentiment Analyzer</span>
+        <span class="work-metric">6-panel dashboard &middot; 8 filters</span>
+      </div>
+      <p class="work-desc">Phrase-based sentiment analysis across Google Workspace communications, with context extraction, dual-metric scoring, and constraint-based filtering.</p>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">TextBlob</span><span class="chip">OAuth 2.0</span><span class="chip">Matplotlib</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-name">Microsoft 365 Sentiment Analyzer</span>
+        <span class="work-metric">6 sources &middot; 4 chart types</span>
+      </div>
+      <p class="work-desc">Full-stack sentiment analysis across Teams, Outlook, OneDrive, SharePoint, and OneNote, with a hybrid VADER + TextBlob NLP engine and interactive visualizations.</p>
+      <div class="chips">
+        <span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">Recharts</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">Credentials</h2>
+    <p class="credentials">
+      <strong>MSc Computer Science</strong> (Distinction), University of Greenwich &nbsp;&middot;&nbsp;
+      <strong>AWS Solutions Architect</strong> &ndash; Associate &nbsp;&middot;&nbsp;
+      <strong>Azure Developer Associate</strong> (AZ-204) &nbsp;&middot;&nbsp;
+      <strong>Azure Fundamentals</strong> (AZ-900) &nbsp;&middot;&nbsp;
+      <strong>Google AI Essentials</strong> &nbsp;&middot;&nbsp;
+      <strong>OutSkill AI Generalist Accelerator</strong>
+    </p>
+  </div>
+
+  <div class="cta">
+    <div class="cta-text">
+      <div class="cta-head">Ready to talk?</div>
+      <div class="cta-sub"><a href="https://calendly.com/yadnyeshmulay/30min">calendly.com/yadnyeshmulay/30min</a> &nbsp;&middot;&nbsp; yadnyeshmulay@gmail.com</div>
+    </div>
+    <img src="../../assets/qr-book-a-call.png" alt="QR code to book a call" />
+  </div>
+
+</div>
+</body>
+</html>
