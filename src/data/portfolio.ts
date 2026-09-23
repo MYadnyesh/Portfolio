@@ -120,29 +120,6 @@ The UI features a glass-morphism design system with smooth animations, responsiv
     proficiency: "Used",
     year: 2023,
     metrics: {}
-  },
-  {
-    id: "newsapp",
-    name: "NewsApp",
-    tagline: "Lightweight news aggregation interface.",
-    description: "Vanilla HTML/CSS/JavaScript news reader consuming a public news API. Clean responsive layout, category filtering, article preview cards, and direct link-out to sources. Early project demonstrating API integration and frontend fundamentals.",
-    longDescription: `Simple single-page application fetching from NewsAPI.org. Features: category tabs (Technology, Business, Sports, etc.), responsive card grid, loading states, error handling, and external link navigation. Built before React adoption, shows progression from vanilla JS to modern frameworks.`,
-    problem: "Need a distraction-free way to scan headlines across categories without algorithmic feed manipulation.",
-    solution: "Direct API consumption with manual category control and chronological sorting.",
-    stack: ["HTML", "CSS", "JavaScript", "NewsAPI.org"],
-    aiInvolvement: "None, pre-AI integration project. Included for timeline context.",
-    category: "Frontend",
-    status: "Archived",
-    links: {
-      github: "https://github.com/MYadnyesh/NewsApp",
-      live: null,
-      docs: null
-    },
-    screenshots: [],
-    featured: false,
-    proficiency: "Familiar",
-    year: 2021,
-    metrics: {}
   }
 ];
 
