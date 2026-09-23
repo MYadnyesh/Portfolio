@@ -27,11 +27,14 @@
   --color-familiar: #8f887b;
   --color-exploring: #56514a;
 
-  /* Typography */
-  --font-display: "Archivo", system-ui, sans-serif;
-  --font-body: "Archivo", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  /* Typography. Font faces are loaded via next/font/google in layout.tsx
+     (self-hosted, no render-blocking stylesheet) and exposed as these CSS
+     variables; every component below reads --font-display etc, not a
+     literal family name, so this is the only place that needs to know. */
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
 
   /* Font sizes */
   --text-xs: 0.75rem;

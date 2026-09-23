@@ -37,6 +37,11 @@ export function ThreeBackground() {
     const mount = mountRef.current;
     if (!mount) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // The parallax is driven by pointer drift, meaningless on a touch
+    // device, and mobile Lighthouse showed this 720KB WebGL chunk as the
+    // single biggest cost to JS execution and main-thread work on the page.
+    // Below the md breakpoint it's not worth either the bytes or the CPU.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
 
     let disposed = false;
     let teardown: (() => void) | undefined;

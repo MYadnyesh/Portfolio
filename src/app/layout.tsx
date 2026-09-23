@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Archivo, IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
 import { siteConfig } from "@/data/portfolio";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { BackgroundFX } from "@/components/ui/BackgroundFX";
@@ -7,6 +8,31 @@ import { ContentProtection } from "@/components/ui/ContentProtection";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import "./globals.css";
+
+// Self-hosted at build time instead of a runtime <link> to fonts.googleapis.com:
+// mobile Lighthouse showed that external stylesheet as render-blocking,
+// costing ~850ms before first paint. next/font inlines the @font-face rules
+// and serves the font files from this origin, with font-display: swap.
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -80,15 +106,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`scroll-smooth ${archivo.variable} ${ibmPlexMono.variable} ${instrumentSerif.variable}`}
+    >
       <head>
         <StructuredData />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
-          rel="stylesheet"
-        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

@@ -83,10 +83,12 @@ export function Hero() {
           </motion.div>
 
           <div className="max-w-4xl">
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+            {/* Plain h1, not motion.h1: this is the page's LCP element, and
+                mobile Lighthouse showed a ~2s render delay here because the
+                browser had the text ready but withheld paint until JS
+                hydrated and ran the fade-in. It's above the fold on load —
+                nothing is gained by animating it in, only lost. */}
+            <h1
               className="font-display font-bold uppercase leading-[0.92] tracking-tight text-fg"
               style={{ fontSize: "clamp(3rem, 7vw, 6.75rem)" }}
             >
@@ -98,7 +100,7 @@ export function Hero() {
                 ai
               </span>
               .
-            </motion.h1>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}

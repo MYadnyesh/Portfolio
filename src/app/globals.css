@@ -5,10 +5,13 @@
 @custom-variant light (&:where(.light, .light *));
 
 @theme {
-  --font-display: "Archivo", system-ui, sans-serif;
-  --font-body: "Archivo", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-  --font-serif: "Instrument Serif", serif;
+  /* Kept in sync with styles/tokens.css: this block is parsed after that
+     import, so it's the one that actually wins in the cascade. Fonts are
+     loaded via next/font/google in layout.tsx, not a literal family name. */
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-serif: var(--font-instrument-serif), serif;
 
   /* Fluid editorial type scale */
   --text-display: clamp(3.25rem, 5vw + 2.5rem, 8.5rem);
