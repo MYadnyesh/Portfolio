@@ -1,12 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
 import { services, socialLinks } from "@/data/portfolio";
-import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { CheckCircle, AlertCircle, Loader2, CalendarDays } from "lucide-react";
 import type { ContactFormState } from "@/app/actions/contact";
 import { submitToWeb3Forms } from "@/lib/web3forms";
 
@@ -63,6 +63,12 @@ export function Contact() {
   );
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+  // The Calendly embed pulls ~2.8MB (its own JS/CSS, plus Stripe and an
+  // analytics beacon it loads itself) and ~2s of main-thread work. Loading
+  // that for every visitor to pay for the few who book is a bad trade, so
+  // it stays behind a click. The direct link below never needs any of it.
+  const [showCalendar, setShowCalendar] = useState(false);
 
   return (
     <section id="contact" className="section bg-bg-elevated">
@@ -266,15 +272,50 @@ export function Contact() {
               <p className="text-sm text-fg mb-5 max-w-md border-l-2 border-accent bg-accent-muted pl-4 py-3">
                 Rather just pick a time? Book a 30-minute call directly below, no message required.
               </p>
-              <div
-                className="calendly-inline-widget border border-border"
-                data-url={`${socialLinks.calendly}?hide_gdpr_banner=1&background_color=14120f&text_color=e8e4dc&primary_color=7d1f2e`}
-                style={{ minWidth: "280px", height: "650px" }}
-              />
-              <Script
-                src="https://assets.calendly.com/assets/external/widget.js"
-                strategy="lazyOnload"
-              />
+              {showCalendar ? (
+                <>
+                  <div
+                    className="calendly-inline-widget border border-border"
+                    data-url={`${socialLinks.calendly}?hide_gdpr_banner=1&background_color=14120f&text_color=e8e4dc&primary_color=7d1f2e`}
+                    style={{ minWidth: "280px", height: "650px" }}
+                  />
+                  <Script
+                    src="https://assets.calendly.com/assets/external/widget.js"
+                    strategy="afterInteractive"
+                  />
+                </>
+              ) : (
+                <div className="border border-border p-6 sm:p-8 flex flex-col items-start gap-4">
+                  <CalendarDays
+                    className="w-7 h-7 text-accent-readable"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <p className="font-display font-bold text-lg">Pick a time</p>
+                    <p className="text-sm text-fg-muted mt-1 max-w-sm">
+                      Opens my live calendar with available 30-minute slots.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                    <button
+                      type="button"
+                      onClick={() => setShowCalendar(true)}
+                      className="btn-accent"
+                    >
+                      Show available times
+                    </button>
+                    <a
+                      href={socialLinks.calendly}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs uppercase tracking-meta text-fg-muted border-b border-fg-subtle pb-1 transition-colors hover:text-accent-readable hover:border-accent-readable"
+                    >
+                      Open in a new tab &rarr;
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>

@@ -43,7 +43,7 @@ function PronunciationEntry() {
         <Volume2 className={`w-4 h-4 ${speaking ? "animate-pulse" : ""}`} aria-hidden="true" />
       </button>
       <span className="font-mono text-sm text-fg-muted">/ˈjəd.nyeʃ/</span>
-      <span className="font-mono text-xs uppercase tracking-meta text-fg-subtle">
+      <span className="font-mono text-xs uppercase tracking-meta text-fg-muted">
         proper noun
       </span>
       <span className="w-full text-base md:text-lg font-medium text-fg max-w-md">
@@ -68,7 +68,17 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <Image src="/images/ym-mark.png" alt="" width={72} height={72} className="h-14 w-auto sm:h-16" priority />
+            {/* sizes pins the srcset candidate to the real rendered size —
+                without it Next served a 256px file for a 64px slot. */}
+            <Image
+              src="/images/ym-mark.png"
+              alt=""
+              width={72}
+              height={72}
+              sizes="64px"
+              className="h-14 w-auto sm:h-16"
+              priority
+            />
           </motion.div>
 
           {/* Eyebrow row, left + right */}

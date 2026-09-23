@@ -62,7 +62,7 @@ export function Capabilities() {
                     {items.map((item) => (
                       <span
                         key={item.name}
-                        className="font-display font-bold text-2xl md:text-4xl uppercase tracking-tight text-fg-subtle transition-colors hover:text-fg mx-5 md:mx-7 flex items-center gap-5 md:gap-7"
+                        className="font-display font-bold text-2xl md:text-4xl uppercase tracking-tight text-fg-muted transition-colors hover:text-fg mx-5 md:mx-7 flex items-center gap-5 md:gap-7"
                       >
                         {item.name}
                         <span className="text-accent text-base md:text-lg" aria-hidden>

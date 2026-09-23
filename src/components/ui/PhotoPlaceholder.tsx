@@ -32,8 +32,17 @@ export function PhotoPlaceholder({
       style={{ aspectRatio: ratio }}
     >
       {src ? (
+        // Plain img rather than next/image because these include animated
+        // GIFs, which next/image can't optimise. Lazy + async decode at least
+        // keeps them off the critical path — every use of this is below the fold.
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-4">
           <div className="w-10 h-10 rounded-full border border-border-strong-solid flex items-center justify-center">

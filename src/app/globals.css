@@ -120,10 +120,13 @@
   color: var(--color-fg-muted);
 }
 
+/* fg-muted, not fg-subtle: these numbers sit on bg-card, where subtle only
+   reaches 2.2:1 and fails WCAG AA. fg-subtle stays as-is for genuinely
+   decorative use (placeholder glyphs, idle states that brighten on hover). */
 @utility index-num {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
-  color: var(--color-fg-subtle);
+  color: var(--color-fg-muted);
   font-weight: 400;
 }
 
@@ -405,7 +408,7 @@
 }
 @utility animate-drift-slow { animation: drift-slow 60s ease-in-out infinite alternate; }
 @utility animate-drift-fast { animation: drift-fast 42s ease-in-out infinite alternate; }
-@utility animate-grid-pan { animation: grid-pan 40s linear infinite; }
+@utility animate-grid-pan { animation: grid-pan 40s linear infinite; will-change: transform; }
 @utility animate-glow-pulse { animation: glow-pulse 12s ease-in-out infinite; }
 @keyframes drift-slow {
   from { transform: translate3d(0, 0, 0) scale(1); }
@@ -415,9 +418,13 @@
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(4%, -3%, 0); }
 }
+/* Transform, not background-position: the latter can't be composited, so it
+   repainted the full-viewport grid on the main thread every frame. The grid
+   tiles every 64px, so translating exactly one tile loops seamlessly. The
+   element is inset past the viewport edges to cover the travel. */
 @keyframes grid-pan {
-  from { background-position: 0 0; }
-  to { background-position: 64px 64px; }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(64px, 64px, 0); }
 }
 @keyframes glow-pulse {
   0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.05; }

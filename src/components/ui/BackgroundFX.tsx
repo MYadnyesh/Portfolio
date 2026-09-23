@@ -30,7 +30,8 @@ export function BackgroundFX() {
       <ThreeBackground />
 
       {/* Faint moving grid */}
-      <div className="absolute inset-0 bg-grid animate-grid-pan opacity-[0.05]" />
+      {/* Inset past the edges so the 64px transform pan never exposes a seam. */}
+      <div className="absolute inset-[-64px] bg-grid animate-grid-pan opacity-[0.05]" />
 
       {/* Soft accent glow that breathes */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] rounded-full animate-glow-pulse"
