@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { projects, siteConfig } from "@/data/portfolio";
+import { contentItems, hasContent } from "@/content/posts";
 
 // The homepage is the canonical entry point. /about and /projects/* are separate
 // indexable URLs: each one carries unique copy about Yadnyesh Mulay and his work,
@@ -27,6 +28,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    // /content joins the sitemap with its first item; before that it is noindex.
+    ...(hasContent
+      ? [
+          {
+            url: `${siteConfig.url}/content`,
+            lastModified: new Date(`${contentItems[0].publishedOn}T00:00:00Z`),
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+          },
+        ]
+      : []),
     ...projects.map((project) => ({
       url: `${siteConfig.url}/projects/${project.id}`,
       lastModified,

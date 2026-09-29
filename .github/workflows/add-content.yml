@@ -1,0 +1,85 @@
+name: Add content from issue
+
+# Turns an "Add content" issue into an entry in src/content/posts.json and
+# pushes it to the default branch, which Vercel deploys.
+#
+# Only runs for issues opened (or reopened) by the repository owner, so
+# nobody else can put words on the site even if the repository is public.
+#
+# If branch protection is later enabled on the default branch, a direct push
+# from GITHUB_TOKEN will be rejected. Then either allow GitHub Actions to
+# bypass the rule for this workflow, or switch to opening a pull request with
+# a fine-grained token (PRs opened with GITHUB_TOKEN do not trigger CI).
+# See docs/CONTENT.md.
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: add-content
+  cancel-in-progress: false
+
+jobs:
+  add:
+    if: >-
+      startsWith(github.event.issue.title, '[Content]') &&
+      github.event.issue.user.login == github.repository_owner &&
+      github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Add entry to posts.json
+        id: add
+        env:
+          # Untrusted text: passed as an environment variable, never interpolated into the script.
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node scripts/add-content-from-issue.mjs
+
+      - name: Commit and push
+        env:
+          ENTRY_ID: ${{ steps.add.outputs.id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/posts.json
+          git commit -m "Add content: ${ENTRY_ID}" -m "From issue #${ISSUE_NUMBER}."
+          for attempt in 1 2 3; do
+            git pull --rebase origin "$DEFAULT_BRANCH" && git push origin "HEAD:$DEFAULT_BRANCH" && exit 0
+            sleep 5
+          done
+          echo "Push failed after 3 attempts" > /tmp/add-content-error.txt
+          exit 1
+
+      - name: Report success and close
+        env:
+          ENTRY_ID: ${{ steps.add.outputs.id }}
+          WARNING: ${{ steps.add.outputs.warning }}
+        run: |
+          printf 'Added to the site as `%s`. It will be live at https://yadnyesh.dev/content#%s once the deploy finishes (usually a minute or two).\n' "$ENTRY_ID" "$ENTRY_ID" > /tmp/comment.md
+          if [ -n "$WARNING" ]; then printf '\n%s\n' "$WARNING" >> /tmp/comment.md; fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file /tmp/comment.md
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason completed
+
+      - name: Report failure
+        if: failure()
+        run: |
+          reason="$(cat /tmp/add-content-error.txt 2>/dev/null || echo "The workflow failed. Open the run log for details.")"
+          printf 'Could not add this yet.\n\n%s\n\nFix the issue text (edit the issue), then close and reopen it to try again. Run log: %s/%s/actions/runs/%s\n' \
+            "$reason" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > /tmp/comment.md
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file /tmp/comment.md

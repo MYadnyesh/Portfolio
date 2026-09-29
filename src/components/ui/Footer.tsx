@@ -26,7 +26,11 @@ const socials = [
 
 const emailAddress = socialLinks.email.replace(/^mailto:/, "");
 
-export function Footer() {
+export function Footer({ showContent = false }: { showContent?: boolean }) {
+  const links = showContent
+    ? [...pageLinks.slice(0, 4), { label: "Writing and posts", href: "/content" }, ...pageLinks.slice(4)]
+    : pageLinks;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -58,7 +62,7 @@ export function Footer() {
           <nav aria-label="Footer pages">
             <p className="eyebrow mb-5">Pages</p>
             <ul className="flex flex-col gap-3">
-              {pageLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}

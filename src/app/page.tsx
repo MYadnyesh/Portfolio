@@ -9,16 +9,18 @@ import { AISystems } from "@/components/sections/AISystems";
 // import { Testimonials } from "@/components/sections/Testimonials";
 import { SplitFeature } from "@/components/sections/SplitFeature";
 import { Explorations } from "@/components/sections/Explorations";
+import { LatestContent } from "@/components/sections/LatestContent";
 import { About } from "@/components/sections/About";
 import { NextStep } from "@/components/sections/NextStep";
 import { Contact } from "@/components/sections/Contact";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
+import { hasContent } from "@/content/posts";
 
 export default function Home() {
   return (
     <>
-      <Navigation />
+      <Navigation showContent={hasContent} />
       <main id="main-content">
         <Hero />
         <Approach />
@@ -30,11 +32,12 @@ export default function Home() {
         {/* <Testimonials /> */}
         <SplitFeature />
         <Explorations />
+        <LatestContent />
         <About />
         <NextStep />
         <Contact />
       </main>
-      <Footer />
+      <Footer showContent={hasContent} />
     </>
   );
 }

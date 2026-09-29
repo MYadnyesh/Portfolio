@@ -1,21 +1,34 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { socialLinks } from "@/data/portfolio";
 
-const navItems = [
-  { href: "#hero", label: "Home", index: "00" },
-  { href: "#projects", label: "Work", index: "01" },
-  { href: "#t-shaped", label: "Systems", index: "02" },
-  { href: "#testimonials", label: "Words", index: "03" },
-  { href: "#about", label: "About", index: "04" },
-  { href: "#contact", label: "Contact", index: "05" },
+// Hash hrefs scroll to a section on the homepage; hrefs starting with "/" are
+// real routes and navigate normally. Index numbers are derived from position.
+const baseNavItems = [
+  { href: "#hero", label: "Home" },
+  { href: "#projects", label: "Work" },
+  { href: "#t-shaped", label: "Systems" },
+  { href: "#testimonials", label: "Words" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
 ];
 
-export function Navigation() {
+const isRoute = (href: string) => href.startsWith("/");
+
+export function Navigation({ showContent = false }: { showContent?: boolean }) {
+  const navItems = useMemo(() => {
+    const items = [...baseNavItems];
+    // "Content" appears only once there is something to show (see src/content/posts.ts).
+    if (showContent) {
+      items.splice(items.findIndex((item) => item.href === "#contact"), 0, { href: "/content", label: "Content" });
+    }
+    return items.map((item, i) => ({ ...item, index: String(i).padStart(2, "0") }));
+  }, [showContent]);
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#hero");
@@ -41,6 +54,7 @@ export function Navigation() {
   // IntersectionObserver to track active section
   useEffect(() => {
     const sections = navItems
+      .filter((item) => !isRoute(item.href))
       .map((item) => document.querySelector(item.href))
       .filter(Boolean) as Element[];
 
@@ -57,7 +71,7 @@ export function Navigation() {
 
     sections.forEach((section) => observerRef.current?.observe(section));
     return () => observerRef.current?.disconnect();
-  }, []);
+  }, [navItems]);
 
   const scrollTo = useCallback((href: string) => {
     const element = document.querySelector(href);
@@ -103,6 +117,7 @@ export function Navigation() {
                     key={item.href}
                     href={item.href}
                     onClick={(e) => {
+                      if (isRoute(item.href)) return;
                       e.preventDefault();
                       scrollTo(item.href);
                     }}
@@ -159,6 +174,10 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => {
+                    if (isRoute(item.href)) {
+                      setIsMobileMenuOpen(false);
+                      return;
+                    }
                     e.preventDefault();
                     scrollTo(item.href);
                   }}
