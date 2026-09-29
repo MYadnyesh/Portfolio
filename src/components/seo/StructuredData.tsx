@@ -1,4 +1,4 @@
-import { siteConfig, socialLinks, projects, experience, services, work } from "@/data/portfolio";
+import { siteConfig, socialLinks, projects, experience, services, work, languages } from "@/data/portfolio";
 
 export function StructuredData() {
   const personSchema = {
@@ -14,6 +14,25 @@ export function StructuredData() {
     image: `${siteConfig.url}/images/photos/Yadnyesh.png`,
     sameAs: Object.values(socialLinks).filter((link) => link.startsWith("http")),
     jobTitle: "AI-first T-shaped Full Stack Developer / Business & AI Transformation Consultant",
+    // Disambiguation signals: several other people share the name "Yadnyesh".
+    // Location, languages and the canonical about page tell Google which one this is.
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Nashik",
+      addressRegion: "Maharashtra",
+      addressCountry: "IN",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: "Nashik, Maharashtra, India",
+    },
+    knowsLanguage: languages.map((language) => language.name),
+    mainEntityOfPage: `${siteConfig.url}/about`,
+    subjectOf: {
+      "@type": "AboutPage",
+      url: `${siteConfig.url}/about`,
+      name: "About Yadnyesh Mulay",
+    },
     worksFor: work
       .filter((job) => job.current)
       .map((job) => ({

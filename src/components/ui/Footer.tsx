@@ -11,6 +11,10 @@ const pageLinks = [
   { label: "Systems", href: "#capabilities" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
+  // Real routes, not hash fragments: these give crawlers a path off the homepage
+  // to the separately indexable /about and /projects pages.
+  { label: "About Yadnyesh Mulay", href: "/about" },
+  { label: "All projects", href: "/projects" },
 ];
 
 const socials = [
