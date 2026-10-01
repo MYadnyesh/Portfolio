@@ -10,6 +10,10 @@ interface PhotoPlaceholderProps {
   className?: string;
   /** aspect ratio, e.g. "3/4", "4/5", "1/1", "16/9" */
   ratio?: string;
+  /** Above-the-fold image: load eagerly with high fetch priority. */
+  priority?: boolean;
+  /** CSS object-position for the cropped image, e.g. "50% 15%" */
+  position?: string;
 }
 
 /**
@@ -22,6 +26,8 @@ export function PhotoPlaceholder({
   label = "Add photo",
   className,
   ratio = "3/4",
+  priority = false,
+  position,
 }: PhotoPlaceholderProps) {
   return (
     <div
@@ -34,13 +40,15 @@ export function PhotoPlaceholder({
       {src ? (
         // Plain img rather than next/image because these include animated
         // GIFs, which next/image can't optimise. Lazy + async decode at least
-        // keeps them off the critical path — every use of this is below the fold.
+        // keeps them off the critical path. Pass `priority` for anything above the fold.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
           decoding="async"
+          style={position ? { objectPosition: position } : undefined}
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : (

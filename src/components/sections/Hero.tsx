@@ -150,7 +150,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="flex items-end justify-between gap-6 md:gap-10"
+            className="flex items-end justify-between gap-3 sm:gap-6 md:gap-10"
           >
             {/* Full wordmark, never obscured */}
             <div
@@ -161,11 +161,13 @@ export function Hero() {
               YADNYESH
             </div>
             {/* Portrait photo slot, alongside, never covering the name */}
-            <div className="shrink-0 w-[22%] max-w-55 min-w-27.5 hidden sm:block">
+            <div className="shrink-0 w-[26%] sm:w-[22%] max-w-55 min-w-20 sm:min-w-27.5">
               <PhotoPlaceholder
                 ratio="3/4"
                 alt="Portrait of Yadnyesh"
                 src="/images/photos/Yadnyesh.png"
+                priority
+                position="50% 20%"
                 className="rounded-none"
               />
             </div>
