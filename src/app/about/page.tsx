@@ -9,6 +9,7 @@ import {
   projects,
   socialLinks,
 } from "@/data/portfolio";
+import { jsonLd } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
   title: "About Yadnyesh Mulay",
@@ -87,7 +88,7 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([aboutSchema, faqSchema, breadcrumb]),
+          __html: jsonLd([aboutSchema, faqSchema, breadcrumb]),
         }}
       />
       <div className="container max-w-3xl">

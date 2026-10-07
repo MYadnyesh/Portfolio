@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, siteConfig } from "@/data/portfolio";
+import { jsonLd } from "@/lib/jsonLd";
 
 type Params = { slug: string };
 
@@ -91,7 +92,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
     <main id="main-content" className="section">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([schema, breadcrumb]) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd([schema, breadcrumb]) }}
       />
       <article className="container max-w-3xl">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-fg-muted">

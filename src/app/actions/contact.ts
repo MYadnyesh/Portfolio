@@ -68,9 +68,20 @@ async function getClientIp(): Promise<string> {
 /* ------------------------------------------------------------------ */
 async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  // If no secret is configured, skip (keeps local dev working). In
-  // production, set TURNSTILE_SECRET_KEY so this is enforced.
-  if (!secret) return true;
+
+  // Fail closed in production: a missing secret there is a misconfiguration,
+  // and treating it as "verified" would silently drop the only bot defence on
+  // the form. Outside production the check is skipped so local dev works
+  // without Cloudflare credentials.
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      console.error(
+        "TURNSTILE_SECRET_KEY is not set in production; rejecting contact submission."
+      );
+      return false;
+    }
+    return true;
+  }
   if (!token) return false;
 
   try {

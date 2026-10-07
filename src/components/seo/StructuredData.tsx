@@ -1,4 +1,5 @@
 import { siteConfig, socialLinks, projects, experience, services, work, languages } from "@/data/portfolio";
+import { jsonLd } from "@/lib/jsonLd";
 
 export function StructuredData() {
   const personSchema = {
@@ -165,7 +166,7 @@ export function StructuredData() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
+      dangerouslySetInnerHTML={{ __html: jsonLd(allSchemas) }}
     />
   );
 }

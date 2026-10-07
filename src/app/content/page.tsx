@@ -4,6 +4,7 @@ import { siteConfig, socialLinks } from "@/data/portfolio";
 import { contentItems, hasContent } from "@/content/posts";
 import { displayTitle, schemaTypeFor } from "@/content/content-meta";
 import { ContentList } from "@/components/content/ContentList";
+import { jsonLd } from "@/lib/jsonLd";
 
 const title = "Writing and posts by Yadnyesh Mulay";
 const description =
@@ -63,7 +64,7 @@ export default function ContentPage() {
     <main id="main-content" className="section">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([collectionSchema, breadcrumb]) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd([collectionSchema, breadcrumb]) }}
       />
       <div className="container max-w-5xl">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-fg-muted">

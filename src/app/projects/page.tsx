@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { projects, siteConfig } from "@/data/portfolio";
+import { jsonLd } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
   title: "Projects by Yadnyesh Mulay",
@@ -48,7 +49,7 @@ export default function ProjectsIndex() {
     <main id="main-content" className="section">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([listSchema, breadcrumb]) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd([listSchema, breadcrumb]) }}
       />
       <div className="container max-w-4xl">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-fg-muted">
