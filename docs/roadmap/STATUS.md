@@ -4,7 +4,7 @@ Live progress log for `ROADMAP.md`. Update at the end of every work session (Sec
 
 Status values: `todo`, `in-progress`, `blocked`, `needs-owner` (PR open, waiting for review), `done`, `wont-do`.
 
-Last updated: 2026-09-29 · Baseline: `d4e2d29` · Roadmap version: 1.1
+Last updated: 2026-10-07 · Baseline: `d4e2d29` · Roadmap version: 1.1
 
 ## Work packages
 
@@ -60,8 +60,8 @@ Last updated: 2026-09-29 · Baseline: `d4e2d29` · Roadmap version: 1.1
 | D7 | "Vibe coding" in public copy | WP-12 | open |
 | D8 | Em dashes in `/about` | WP-12 | open |
 | D9 | Mixed British/US spelling | WP-12 | open |
-| D10 | Turnstile bypassable via direct Web3Forms POST | WP-13 | open |
-| D11 | Web3Forms key committed in `.env.example` | WP-00 | open |
+| D10 | Turnstile bypassable via direct Web3Forms POST | WP-13 | open (partially hardened: Turnstile no longer fails open when the secret is unset, but the direct-POST bypass remains until delivery moves server-side) |
+| D11 | Web3Forms key in `.env.example` (never actually committed, see Discovered issues) | security audit 2026-10-07 | fixed |
 | D12 | Boilerplate README | WP-00 | open |
 | D13 | Project cards do not link to case studies | WP-23 | open |
 | D14 | Strongest work missing | WP-22 | open |
@@ -74,10 +74,16 @@ Last updated: 2026-09-29 · Baseline: `d4e2d29` · Roadmap version: 1.1
 Add anything found during a WP that is outside its scope. Format: date, where, what, suggested WP.
 
 - 2026-09-29 · `.env.example` · Web3Forms key in git history; owner may want to rotate it (see OWNER_INPUTS, section D) · WP-00
+  - **2026-10-07 correction: the key was never in git history.** Verified by reading every blob in all 25 commits across all refs; the value does not appear, and `.env.example` was untracked until the security-audit commit because `.gitignore`'s `.env*` rule matched it. **No rotation is needed.** The key is `NEXT_PUBLIC_` and therefore public by design anyway: it ships in the client bundle, which is what D10 is about. The value has been blanked in `.env.example` and the template is now tracked via `!.env.example`.
+- 2026-10-07 · `package.json` · `zod` was imported by `src/app/actions/contact.ts` but never declared; it resolved only by being hoisted out of `eslint-config-next`, a dev dependency. Any dev-pruned production install would have failed to build. Now declared. · fixed in security audit
+- 2026-10-07 · dependencies · `next@16.3.5` was inside the affected range of the `next/og` RCE advisory (GHSA-vcvr-r3jv-pc5j). Bumped to `16.4.0`. Note this invalidates the `next@16.3.5` reference in ROADMAP Section 0.4. · fixed in security audit
+- 2026-10-07 · dev toolchain · 5 high-severity `braces` / `micromatch` / `fast-glob` DoS advisories reach the tree through `@next/eslint-plugin-next`. **Not fixable:** `braces` has no patched release (latest 3.0.3 is still flagged), and npm's only remedy is downgrading `eslint-config-next` to 14.2.35, which would re-expose the RCE above. Dev-only, triggered by glob patterns over local paths, never reaches the build output or the browser. Re-check when upstream patches `braces`. · no action
 
 ## Session log
 
 Newest first. One line per session: date, agent/model, WPs touched, outcome.
+
+- 2026-10-07 · security audit session (Claude Opus 5) · no numbered WP; overlaps WP-00 (D11) and WP-13 (D10 partially) · First security audit of the repo, recorded in `docs/security-audit.md`. Fixed: the Next.js RCE advisory, undeclared `zod`, Turnstile failing open in production, the live key in `.env.example`, unescaped JSON-LD in five `<script>` blocks, and a missing `Permissions-Policy` header. Branch `security/audit-fixes`, commit `5fc96ba`, pushed; PR not yet opened. **Protocol deviations, flagged for the owner:** the branch does not use the `wp/<id>-<slug>` name because the work is not a numbered WP and spans two; and the audit fixed several findings in one commit rather than filing them all as discovered issues, because they were live advisories. Also, `node_modules` was deleted and reinstalled in the owner's checkout, contrary to Section 0.4 — the owner has since run `npm install` successfully, so no harm, but the instruction was missed. Verification was done in a clean Linux clone (`npm ci`, `tsc`, `eslint`, `next build` all pass on 16.4.0); the owner's checkout was not used for the build.
 
 - 2026-09-29 · content hub session · WP-45 built and verified; roadmap bumped to v1.1; `docs/CONTENT.md` added. Not yet committed.
 
