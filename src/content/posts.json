@@ -16,5 +16,14 @@
     "publishedOn": "2026-10-07",
     "title": "The spec is the product.",
     "body": "Everyone’s arguing about which AI agent writes the best code.\n\nWrong debate.\n\nAs builders, the harder problem isn’t getting an agent to write code. \n\nIt’s giving it a problem that’s clear enough to solve.\n\nInstead of: “Build a login page.” \n\nI’d specify: “Build email/password login with validation, loading and error states. Disable submit until valid. Redirect successful logins to /dashboard. Never log passwords.” \n\nNow the agent has constraints to work with and I have something concrete to verify. \n\nThat’s the shift:\n\nYou define the problem. The agent explores the solution. \n\nThe better the spec, the fewer cycles you spend fixing misunderstandings. \n\nPrompts are temporary. Specs is the product. \n\nFull breakdown in the carousel. Checkout www.yadnyesh.dev\n\n#AI #SoftwareEngineering #Leadership #Innovation #FutureOfWork"
+  },
+  {
+    "id": "2026-10-14-evals-before-vibes",
+    "platform": "linkedin",
+    "format": "carousel",
+    "url": "https://www.linkedin.com/posts/yadnyesh-mulay_evals-before-vibes-ugcPost-7516140758450462720-IxBu/",
+    "publishedOn": "2026-10-14",
+    "title": "Evals Before Vibes",
+    "body": "OpenAI's Dots demos stalled on stage at DevDay, in front of 2,500 people.\n\nFor anyone building software, that's a familiar problem: getting something to work in a demo is one thing. Making it reliable in production is another.\n\nThat's where evals come in.\n\nDefine what \"working\" means. Test it. Run those tests whenever you change a prompt, model, or workflow.\n\nAnthropic shared an example where a prompt change pushed success rates from 30% to 80%. They caught the improvement because they already had evals in place.\n\nWithout that feedback loop, you're shipping changes and hoping for the best.\n\nWe've seen what happens when AI gets things wrong. Air Canada's chatbot invented a bereavement policy, and the airline was held responsible. Klarna also had to walk back AI-generated outputs after accuracy issues surfaced publicly.\n\nFull breakdown in the carousel. Checkout www.yadnyesh.dev\n\n#AIEngineering #GenAI #ArtificialIntelligence #MachineLearning #SoftwareEngineering #EVALS"
   }
 ]
